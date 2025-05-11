@@ -1,0 +1,3 @@
+rest_controller:
+  resource: ../../api/
+  type: attribute

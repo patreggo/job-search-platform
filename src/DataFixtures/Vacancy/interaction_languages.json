@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Russian",
+    "techName": "russian"
+  },
+  {
+    "name": "English",
+    "techName": "english"
+  },
+  {
+    "name": "French",
+    "techName": "french"
+  },
+  {
+    "name": "Italian",
+    "techName": "italian"
+  },
+  {
+    "name": "Farsi",
+    "techName": "farsi"
+  },
+  {
+    "name": "Spanish",
+    "techName": "spanish"
+  },
+  {
+    "name": "Chinese",
+    "techName": "chinese"
+  }
+]

@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Entity\Vacancy;
+
+use Admin\Entity\TranslatorDomain;
+use Admin\Entity\TranslatorKey;
+use ApiPlatform\Metadata\ApiResource;
+use App\Attributes\Translatable\FilterableField;
+use App\Repository\Vacancy\VacancyCompanyIndustryRepository;
+use Doctrine\ORM\Mapping as ORM;
+use kvokka\SimpleDoctrineFilter\FilterType;
+use Symfony\Component\Serializer\Annotation\Groups;
+
+#[ORM\Entity(repositoryClass: VacancyCompanyIndustryRepository::class)]
+#[ApiResource(
+    routePrefix: 'admin',
+    normalizationContext: ['groups' => ['read']],
+    forceEager: false
+)]
+class VacancyCompanyIndustry extends AbstractVacancyParameters
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    #[Groups(['read'])]
+    protected ?int $id = null;
+
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
+    #[Groups(['read'])]
+    private ?string $name = null;
+
+    /**
+     * @return string|null
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string|null $name
+     * @return $this
+     */
+    public function setName(?string $name): static
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+}

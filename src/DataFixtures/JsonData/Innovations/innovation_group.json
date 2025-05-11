@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Первая группа нововведении",
+    "techName": "first_innovation_group",
+    "icon": "rocket.png",
+    "position": 1,
+    "isEnabled": true
+  },
+  {
+    "name": "Вторая группа нововведении",
+    "techName": "second_innovation_group",
+    "icon": "innovation.png",
+    "position": 2,
+    "isEnabled": true
+  }
+]

@@ -1,0 +1,79 @@
+<?php
+
+namespace App\Repository\Resume;
+
+use App\Entity\Resume\Education;
+use Common\Repository\AbstractRepository;
+use Doctrine\Persistence\ManagerRegistry;
+
+/**
+ * @extends AbstractRepository<Education>
+ *
+ * @method Education|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Education|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Education[]    findAll()
+ * @method Education[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ */
+class EducationRepository extends AbstractRepository
+{
+    /**
+     * @param ManagerRegistry $registry
+     */
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, Education::class);
+    }
+
+    /**
+     * @param Education $entity
+     * @param bool $flush
+     * @return void
+     */
+    public function save(Education $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    /**
+     * @param Education $entity
+     * @param bool $flush
+     * @return void
+     */
+    public function remove(Education $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+//    /**
+//     * @return Education[] Returns an array of Education objects
+//     */
+//    public function findByExampleField($value): array
+//    {
+//        return $this->createQueryBuilder('e')
+//            ->andWhere('e.exampleField = :val')
+//            ->setParameter('val', $value)
+//            ->orderBy('e.id', 'ASC')
+//            ->setMaxResults(10)
+//            ->getQuery()
+//            ->getResult()
+//        ;
+//    }
+
+//    public function findOneBySomeField($value): ?Education
+//    {
+//        return $this->createQueryBuilder('e')
+//            ->andWhere('e.exampleField = :val')
+//            ->setParameter('val', $value)
+//            ->getQuery()
+//            ->getOneOrNullResult()
+//        ;
+//    }
+}

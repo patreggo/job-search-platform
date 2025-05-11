@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vacancies</title>
+</head>
+<body>
+<h1>Вакансии</h1>
+<div id="vacancies"></div>
+
+<script>
+    async function fetchVacancies() {
+        const response = await fetch('http://localhost:80/api/many_vacancies');
+        const data = await response.json();
+        const container = document.getElementById('vacancies');
+
+        if (data.length === 0) {
+            container.innerHTML = '<p>Нет вакансий</p>';
+            return;
+        }
+
+        container.innerHTML = '<ul>' +
+            data.map(v => `<li>${v.title} — ${v.salary}</li>`).join('') +
+            '</ul>';
+    }
+
+    fetchVacancies();
+</script>
+</body>
+</html>

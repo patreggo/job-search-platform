@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Full employment",
+    "techName": "full_employment"
+  },
+  {
+    "name": "Internship",
+    "techName": "internship"
+  },
+  {
+    "name": "Part-time employment",
+    "techName": "part_time_employment"
+  },
+  {
+    "name": "Project work",
+    "techName": "project_work"
+  },
+  {
+    "name": "Volunteering",
+    "techName": "volunteering"
+  }
+]

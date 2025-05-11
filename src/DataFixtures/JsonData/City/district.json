@@ -1,0 +1,137 @@
+[
+  {
+    "country": "Syria",
+    "name": "Homs Governorate",
+    "tech_name": "Homs Governorate",
+    "import_place_type": "[\"city\",\"town\"]",
+    "point": null,
+    "osm_id": "184877",
+    "national_name": "محافظة حمص"
+  },
+  {
+    "country": "Syria",
+    "name": "Rif Dimashq Governorate",
+    "tech_name": "Rif Dimashq Governorate",
+    "import_place_type": "[\"city\",\"town\"]",
+    "point": null,
+    "osm_id": "184884",
+    "national_name": "محافظة ريف دمشق"
+  },
+  {
+    "country": "Syria",
+    "name": "Al-Anbar Governorate",
+    "tech_name": "Al-Anbar Governorate",
+    "import_place_type": "[\"city\",\"town\"]",
+    "point": null,
+    "osm_id": "3242292",
+    "national_name": "محافظة الأنبار"
+  },
+  {
+    "country": "Syria",
+    "name": "As-Suweida Governorate",
+    "tech_name": "As-Suweida Governorate",
+    "import_place_type": "[\"city\",\"town\"]",
+    "point": null,
+    "osm_id": "184887",
+    "national_name": "محافظة السويداء"
+  },
+  {
+    "country": "Syria",
+    "name": "Al-Quneitra Governorate",
+    "tech_name": "Al-Quneitra Governorate",
+    "import_place_type": "[\"city\",\"town\"]",
+    "point": null,
+    "osm_id": "184885",
+    "national_name": "محافظة القنيطرة"
+  },
+  {
+    "country": "Syria",
+    "name": "Dar'a Governorate",
+    "tech_name": "Dar'a Governorate",
+    "import_place_type": "[\"city\",\"town\"]",
+    "point": null,
+    "osm_id": "184886",
+    "national_name": "محافظة درعا"
+  },
+  {
+    "country": "Syria",
+    "name": "Aleppo Governorate",
+    "tech_name": "Aleppo Governorate",
+    "import_place_type": "[\"city\",\"town\"]",
+    "point": null,
+    "osm_id": "184879",
+    "national_name": "محافظة حلب"
+  },
+  {
+    "country": "Syria",
+    "name": "Hama Governorate",
+    "tech_name": "Hama Governorate",
+    "import_place_type": "[\"city\",\"town\"]",
+    "point": null,
+    "osm_id": "184880",
+    "national_name": "محافظة حماة"
+  },
+  {
+    "country": "Syria",
+    "name": "Idleb Governorate",
+    "tech_name": "Idleb Governorate",
+    "import_place_type": "[\"city\",\"town\"]",
+    "point": null,
+    "osm_id": "184881",
+    "national_name": "محافظة إدلب"
+  },
+  {
+    "country": "Syria",
+    "name": "Damascus Governorate",
+    "tech_name": "Damascus Governorate",
+    "import_place_type": "[\"city\",\"town\"]",
+    "point": null,
+    "osm_id": "7328462",
+    "national_name": "محافظة دمشق"
+  },
+  {
+    "country": "Syria",
+    "name": "Tartus Governorate",
+    "tech_name": "Tartus Governorate",
+    "import_place_type": "[\"city\",\"town\"]",
+    "point": null,
+    "osm_id": "184882",
+    "national_name": "محافظة طرطوس"
+  },
+  {
+    "country": "Syria",
+    "name": "Lattakia Governorate",
+    "tech_name": "Lattakia Governorate",
+    "import_place_type": "[\"city\",\"town\"]",
+    "point": null,
+    "osm_id": "184883",
+    "national_name": "محافظة اللاذقية"
+  },
+  {
+    "country": "Syria",
+    "name": "Al-Hasaka Governorate",
+    "tech_name": "Al-Hasaka Governorate",
+    "import_place_type": "[\"city\",\"town\"]",
+    "point": null,
+    "osm_id": "184856",
+    "national_name": "محافظة الحسكة"
+  },
+  {
+    "country": "Syria",
+    "name": "Deir ez-Zor Governorate",
+    "tech_name": "Deir ez-Zor Governorate",
+    "import_place_type": "[\"city\",\"town\"]",
+    "point": null,
+    "osm_id": "184867",
+    "national_name": "محافظة دير الزور"
+  },
+  {
+    "country": "Syria",
+    "name": "Ar-Raqqa Governorate",
+    "tech_name": "Ar-Raqqa Governorate",
+    "import_place_type": "[\"city\",\"town\"]",
+    "point": null,
+    "osm_id": "184878",
+    "national_name": "محافظة الرقة"
+  }
+]

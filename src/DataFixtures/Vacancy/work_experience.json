@@ -1,0 +1,18 @@
+[
+  {
+    "name": "No experience",
+    "techName": "no_experience"
+  },
+  {
+    "name": "From 1 year to 3 years",
+    "techName": "1_to_3_years"
+  },
+  {
+    "name": "From 3 to 6 years",
+    "techName": "3_to_6_years"
+  },
+  {
+    "name": "More than 6 years",
+    "techName": "over_6_years"
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Before taxes",
+    "techName": "pre_tax"
+  },
+  {
+    "name": "On your hands",
+    "techName": "in_hand"
+  }
+]

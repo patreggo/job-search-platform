@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Message",
+    "techName": "message"
+  },
+  {
+    "name": "Phone",
+    "techName": "phone"
+  },
+  {
+    "name": "Email",
+    "techName": "email"
+  }
+]

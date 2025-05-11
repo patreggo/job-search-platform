@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Information technology, system integration, Internet",
+    "techName": "it_system_integration_internet"
+  },
+  {
+    "name": "Retail",
+    "techName": "retail"
+  },
+  {
+    "name": "Food",
+    "techName": "food"
+  },
+  {
+    "name": "Financial sector",
+    "techName": "finance_sector"
+  },
+  {
+    "name": "Telecommunications, communications",
+    "techName": "telecommunications_communications"
+  },
+  {
+    "name": "Working staff",
+    "techName": "working_personnel"
+  },
+  {
+    "name": "Agriculture",
+    "techName": "agriculture"
+  },
+  {
+    "name": "Purchase",
+    "techName": "purchases"
+  },
+  {
+    "name": "Extraction of raw materials",
+    "techName": "raw_materials_extraction"
+  },
+  {
+    "name": "Top and middle management",
+    "techName": "top_middle_management"
+  },
+  {
+    "name": "Safety",
+    "techName": "safety"
+  },
+  {
+    "name": "Administrative staff",
+    "techName": "administrative_staff"
+  },
+  {
+    "name": "Car business",
+    "techName": "car_business"
+  },
+  {
+    "name": "Art",
+    "techName": "art"
+  },
+  {
+    "name": "Entertainment",
+    "techName": "entertainment"
+  },
+  {
+    "name": "Mass media",
+    "techName": "mass_media"
+  },
+  {
+    "name": "Marketing advertising PR",
+    "techName": "marketing_advertising_pr"
+  },
+  {
+    "name": "Medicine and pharmaceuticals",
+    "techName": "medicine_pharmaceuticals"
+  }
+]

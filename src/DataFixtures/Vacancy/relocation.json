@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Possible",
+    "techName": "possible"
+  },
+  {
+    "name": "Impossible",
+    "techName": "impossible"
+  },
+  {
+    "name": "Temporary",
+    "techName": "temporary"
+  }
+]
