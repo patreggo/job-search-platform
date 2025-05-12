@@ -3,7 +3,7 @@
 namespace App\Repository\Resume;
 
 use App\Entity\Resume\WorkPlace;
-use Common\Repository\AbstractRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -14,7 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method WorkPlace[]    findAll()
  * @method WorkPlace[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class WorkPlaceRepository extends AbstractRepository
+class WorkPlaceRepository extends ServiceEntityRepository
 {
     /**
      * @param ManagerRegistry $registry

@@ -3,18 +3,18 @@
 namespace App\Repository\Resume;
 
 use App\Entity\Resume\DrivingLicenseCategory;
-use Common\Repository\AbstractRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends AbstractRepository<DrivingLicenseCategory>
+ * @extends ServiceEntityRepository<DrivingLicenseCategory>
  *
  * @method DrivingLicenseCategory|null find($id, $lockMode = null, $lockVersion = null)
  * @method DrivingLicenseCategory|null findOneBy(array $criteria, array $orderBy = null)
  * @method DrivingLicenseCategory[]    findAll()
  * @method DrivingLicenseCategory[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class DrivingLicenseCategoryRepository extends AbstractRepository
+class DrivingLicenseCategoryRepository extends ServiceEntityRepository
 {
     /**
      * @param ManagerRegistry $registry

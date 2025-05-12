@@ -3,7 +3,7 @@
 namespace App\Repository\Resume;
 
 use App\Entity\Resume\VacancyResponseStatus;
-use Common\Repository\AbstractRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -15,7 +15,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method VacancyResponseStatus[]    findAll()
  * @method VacancyResponseStatus[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class VacancyResponseStatusRepository extends AbstractRepository
+class VacancyResponseStatusRepository extends ServiceEntityRepository
 {
     /**
      * @param ManagerRegistry $registry

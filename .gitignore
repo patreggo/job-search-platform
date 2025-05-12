@@ -33,3 +33,7 @@ yarn-error.log
 
 .docker/conf/mysql/db-data/*
 *:Zone.Identifier
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###

@@ -3,7 +3,6 @@
 namespace App\Repository\Vacancy;
 
 use App\Entity\Vacancy\VacancyCommunicationType;
-use Common\Repository\AbstractRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

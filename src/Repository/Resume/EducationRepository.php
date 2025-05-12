@@ -3,7 +3,7 @@
 namespace App\Repository\Resume;
 
 use App\Entity\Resume\Education;
-use Common\Repository\AbstractRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -14,7 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Education[]    findAll()
  * @method Education[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class EducationRepository extends AbstractRepository
+class EducationRepository extends ServiceEntityRepository
 {
     /**
      * @param ManagerRegistry $registry

@@ -3,7 +3,7 @@
 namespace App\Repository\Resume;
 
 use App\Entity\Resume\Gender;
-use Common\Repository\AbstractRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -14,7 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Gender[]    findAll()
  * @method Gender[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class GenderRepository extends AbstractRepository
+class GenderRepository extends ServiceEntityRepository
 {
     /**
      * @param ManagerRegistry $registry

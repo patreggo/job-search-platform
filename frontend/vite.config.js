@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite'
 import symfonyPlugin from "vite-plugin-symfony";
 import vue from '@vitejs/plugin-vue'
+import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [vue(), symfonyPlugin()],
+  plugins: [vue(), symfonyPlugin(), tailwindcss()],
   server: {
     host: '0.0.0.0', // Доступно для всех интерфейсов
     port: 5173,

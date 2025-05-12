@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Все вакансии</h1>
+    <h1 class="text-black text-10">Все вакансии</h1>
     <ul v-if="vacancies.length" class="space-y-2">
       <li v-for="vac in vacancies" :key="vac.id" class="p-4 border rounded hover:bg-gray-50 transition">
         <router-link
@@ -11,13 +11,13 @@
         </router-link>
       </li>
     </ul>
-    <p v-else>Загрузка...</p>
+    <p v-else class="text-black">Загрузка...</p>
   </div>
 </template>
 
 <script setup>
 import { onMounted, ref } from 'vue'
-import api from './api'
+import api from '../api.js'
 
 const vacancies = ref([])
 

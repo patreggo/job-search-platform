@@ -3,18 +3,18 @@
 namespace App\Repository\Resume;
 
 use App\Entity\Resume\AwardAndAchievement;
-use Common\Repository\AbstractRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends AbstractRepository<AwardAndAchievement>
+ * @extends ServiceEntityRepository<AwardAndAchievement>
  *
  * @method AwardAndAchievement|null find($id, $lockMode = null, $lockVersion = null)
  * @method AwardAndAchievement|null findOneBy(array $criteria, array $orderBy = null)
  * @method AwardAndAchievement[]    findAll()
  * @method AwardAndAchievement[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AwardAndAchievementRepository extends AbstractRepository
+class AwardAndAchievementRepository extends ServiceEntityRepository
 {
     /**
      * @param ManagerRegistry $registry

@@ -1,72 +1,72 @@
 <template>
   <div class="max-w-2xl mx-auto p-6 bg-white rounded shadow-md">
-    <h2 class="text-2xl font-semibold mb-6">Создание новой вакансии</h2>
+    <h2 class="text-2xl font-semibold mb-6 text-gray-500">Создание новой вакансии</h2>
 
     <form @submit.prevent="submit" class="space-y-6">
 
       <!-- Название вакансии -->
       <div>
-        <label class="block text-sm font-medium text-gray-700">Название вакансии</label>
+        <label class="block text-sm font-medium text-black-700">Название вакансии</label>
         <input v-model="form.name" type="text" placeholder="Название вакансии"
-               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+               class="mt-1 block w-full px-4 py-2 border border-black-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-500" />
       </div>
 
       <!-- Минимальная и максимальная зарплата -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label class="block text-sm font-medium text-gray-700">Мин. зарплата</label>
+          <label class="block text-sm font-medium text-black-700">Мин. зарплата</label>
           <input v-model.number="form.incomeMin" type="number" placeholder="Мин. зарплата"
-                 class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+                 class="mt-1 block w-full px-4 py-2 border border-black-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-500" />
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700">Макс. зарплата</label>
+          <label class="block text-sm font-medium text-black-700">Макс. зарплата</label>
           <input v-model.number="form.incomeMax" type="number" placeholder="Макс. зарплата"
-                 class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+                 class="mt-1 block w-full px-4 py-2 border border-black-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-500" />
         </div>
       </div>
 
       <!-- Адрес работы -->
       <div>
-        <label class="block text-sm font-medium text-gray-700">Адрес работы</label>
+        <label class="block text-sm font-medium text-black-700">Адрес работы</label>
         <input v-model="form.workAddress" type="text" placeholder="Адрес работы"
-               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+               class="mt-1 block w-full px-4 py-2 border border-black-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-500" />
       </div>
 
       <!-- Описание -->
       <div>
-        <label class="block text-sm font-medium text-gray-700">Описание</label>
+        <label class="block text-sm font-medium text-black-700">Описание</label>
         <textarea v-model="form.description" placeholder="Описание"
-                  class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+                  class="mt-1 block w-full px-4 py-2 border border-black-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-500"></textarea>
       </div>
 
       <!-- Требования -->
       <div>
-        <label class="block text-sm font-medium text-gray-700">Требования</label>
+        <label class="block text-sm font-medium text-black-700">Требования</label>
         <textarea v-model="form.requirements" placeholder="Требования"
-                  class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+                  class="mt-1 block w-full px-4 py-2 border border-black-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-500"></textarea>
       </div>
 
       <!-- Обязанности -->
       <div>
-        <label class="block text-sm font-medium text-gray-700">Обязанности</label>
+        <label class="block text-sm font-medium text-black-700">Обязанности</label>
         <textarea v-model="form.responsibilities" placeholder="Обязанности"
-                  class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+                  class="mt-1 block w-full px-4 py-2 border border-black-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-500"></textarea>
       </div>
 
       <!-- Тип занятости -->
       <div>
-        <label class="block text-sm font-medium text-gray-700">Тип занятости</label>
+        <label class="block text-sm font-medium text-black-700">Тип занятости</label>
         <select v-model="form.employmentType" multiple
-                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                class="mt-1 block w-full px-4 py-2 border border-black-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-500">
           <option v-for="type in employmentTypes" :key="type.id" :value="type.id">{{ type.tech_name }}</option>
         </select>
       </div>
 
       <!-- Специализации -->
       <div>
-        <label class="block text-sm font-medium text-gray-700">Специализации</label>
+        <label class="block text-sm font-medium text-black-700">Специализации</label>
         <select v-model="form.specializations" multiple
-                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                class="mt-1 block w-full px-4 py-2 border border-black-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-500">
           <option v-for="spec in specializations" :key="spec.id" :value="spec.id">{{ spec.tech_name }}</option>
         </select>
       </div>
@@ -75,12 +75,12 @@
       <div class="flex flex-col sm:flex-row gap-4">
         <label class="inline-flex items-center">
           <input v-model="form.archived" type="checkbox"
-                 class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500">
+                 class="rounded border-black-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500">
           <span class="ml-2">Архивная</span>
         </label>
         <label class="inline-flex items-center">
           <input v-model="form.isActive" type="checkbox"
-                 class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500">
+                 class="rounded border-black-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500">
           <span class="ml-2">Активна</span>
         </label>
       </div>
@@ -127,7 +127,7 @@ button:hover {
 
 <script setup>
 import { reactive, onMounted, ref } from 'vue'
-import api from './api'
+import api from '../api.js'
 
 const form = reactive({
   name: '',

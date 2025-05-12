@@ -7,8 +7,7 @@ use App\Entity\Resume\VacancyResponse;
 use App\Entity\Resume\VacancyResponseStatus;
 use App\Entity\User;
 use App\Entity\Vacancy\Vacancy;
-use Common\Repository\AbstractRepository;
-use Doctrine\ORM\QueryBuilder;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -20,7 +19,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method VacancyResponse[]    findAll()
  * @method VacancyResponse[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class VacancyResponseRepository extends AbstractRepository
+class VacancyResponseRepository extends ServiceEntityRepository
 {
     /**
      * @param ManagerRegistry $registry

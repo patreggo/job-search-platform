@@ -5,7 +5,7 @@ namespace App\Repository\Resume;
 use App\Entity\Resume\Resume;
 use App\Entity\User;
 use App\Entity\Vacancy\Vacancy;
-use Common\Repository\AbstractRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Query\Parameter;
 use Doctrine\ORM\QueryBuilder;
@@ -20,7 +20,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Resume[]    findAll()
  * @method Resume[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ResumeRepository extends AbstractRepository
+class ResumeRepository extends ServiceEntityRepository
 {
     /**
      * @param ManagerRegistry $registry
