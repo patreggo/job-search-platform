@@ -1,682 +1,346 @@
 [
   {
-    "name": "Car washer",
+    "name": "Мойщик автомобилей",
     "techName": "car_washer"
   },
   {
-    "name": "Car mechanic",
+    "name": "Автомеханик",
     "techName": "car_mechanic"
   },
   {
-    "name": "The master receptionist",
+    "name": "Мастер-приемщик",
     "techName": "master_receptionist"
   },
   {
-    "name": "Sales manager, customer service manager",
+    "name": "Менеджер по продажам, менеджер по работе с клиентами",
     "techName": "sales_manager"
   },
   {
-    "name": "Administrator",
+    "name": "Администратор",
     "techName": "administrator"
   },
   {
-    "name": "Clerk, archivist",
+    "name": "Кладовщик, архивариус",
     "techName": "document_controller"
   },
   {
-    "name": "Courier",
+    "name": "Курьер",
     "techName": "courier"
   },
   {
-    "name": "Manager, head of AHO",
+    "name": "Менеджер, заведующий АХО",
     "techName": "warehouse_manager_aho"
   },
   {
-    "name": "PC operator, database operator",
+    "name": "Оператор ПК, оператор базы данных",
     "techName": "pc_operator"
   },
   {
-    "name": "Office manager",
+    "name": "Офис-менеджер",
     "techName": "office_manager"
   },
   {
-    "name": "Translator",
+    "name": "Переводчик",
     "techName": "translator"
   },
   {
-    "name": "Secretary, assistant manager, assistant",
+    "name": "Секретарь, помощник менеджера, ассистент",
     "techName": "secretary"
   },
   {
-    "name": "A military man",
+    "name": "Военнослужащий",
     "techName": "military_serviceman"
   },
   {
-    "name": "Guard",
+    "name": "Охранник",
     "techName": "security_guard"
   },
   {
-    "name": "Policeman",
+    "name": "Полицейский",
     "techName": "police_officer"
   },
   {
-    "name": "Information security specialist",
+    "name": "Специалист по информационной безопасности",
     "techName": "information_security_specialist"
   },
   {
-    "name": "Security specialist",
+    "name": "Специалист службы безопасности",
     "techName": "security_service_specialist"
   },
   {
-    "name": "Chief executive officer (CEO)",
+    "name": "Генеральный директор (CEO)",
     "techName": "ceo"
   },
   {
-    "name": "Chief information officer (CIO)",
+    "name": "Главный информационный директор (CIO)",
     "techName": "cio"
   },
   {
-    "name": "Chief marketing and PR officer (CMO)",
+    "name": "Главный маркетолог и PR-директор (CMO)",
     "techName": "cmo"
   },
   {
-    "name": "Chief human resources officer (HRD)",
+    "name": "Директор по персоналу (HRD)",
     "techName": "hr_director"
   },
   {
-    "name": "Director of legal department (CLO)",
+    "name": "Директор юридического департамента (CLO)",
     "techName": "chief_legal_officer"
   },
   {
-    "name": "Chief commercial officer (CCO)",
+    "name": "Коммерческий директор (CCO)",
     "techName": "commercial_director"
   },
   {
-    "name": "Production manager",
+    "name": "Руководитель производства",
     "techName": "production_manager"
   },
   {
-    "name": "Chief operating officer (COO)",
+    "name": "Исполнительный директор (COO)",
     "techName": "coo"
   },
   {
-    "name": "Head of analytics",
+    "name": "Руководитель аналитики",
     "techName": "analytics_manager"
   },
   {
-    "name": "Head of logistics department",
+    "name": "Руководитель логистического отдела",
     "techName": "logistics_manager"
   },
   {
-    "name": "Head of marketing and advertising department",
+    "name": "Руководитель отдела маркетинга и рекламы",
     "techName": "marketing_advertising_manager"
   },
   {
-    "name": "Head of human resources",
+    "name": "Руководитель отдела кадров",
     "techName": "hr_manager"
   },
   {
-    "name": "Branch manager",
+    "name": "Руководитель филиала",
     "techName": "branch_manager"
   },
   {
-    "name": "Chief technology officer (CTO)",
+    "name": "Технический директор (CTO)",
     "techName": "cto"
   },
   {
-    "name": "Chief financial officer (CFO)",
+    "name": "Финансовый директор (CFO)",
     "techName": "chief_financial_officer"
   },
   {
-    "name": "Surveyor",
+    "name": "Землемер",
     "techName": "surveyor"
   },
   {
-    "name": "Geologist",
+    "name": "Геолог",
     "techName": "geologist"
   },
   {
-    "name": "Laboratory assistant",
+    "name": "Лаборант",
     "techName": "laboratory_technician"
   },
   {
-    "name": "machinist",
+    "name": "Токарь",
     "techName": "machinist"
   },
   {
-    "name": "Scientific specialist, researcher",
+    "name": "Научный специалист, исследователь",
     "techName": "research_scientist"
   },
   {
-    "name": "Shift supervisor, site foreman",
+    "name": "Мастер смены, прораб",
     "techName": "shift_supervisor"
   },
   {
-    "name": "Technologist",
+    "name": "Технолог",
     "techName": "technologist"
   },
   {
-    "name": "Driver",
+    "name": "Водитель",
     "techName": "driver"
   },
   {
-    "name": "Teacher, nanny",
+    "name": "Учитель, няня",
     "techName": "child_caregiver"
   },
   {
-    "name": "Janitor",
+    "name": "Уборщица, дворник",
     "techName": "janitor"
   },
   {
-    "name": "Waiter, bartender, barista",
+    "name": "Официант, бармен, бариста",
     "techName": "waiter_bartender_barista"
   },
   {
-    "name": "Cleaning lady, janitor",
+    "name": "Уборщица, уборка",
     "techName": "cleaner"
   },
   {
-    "name": "Purchasing manager",
+    "name": "Менеджер по закупкам",
     "techName": "procurement_manager"
   },
   {
-    "name": "Tender specialist",
+    "name": "Специалист по тендерам",
     "techName": "tender_specialist"
   },
   {
-    "name": "BI analyst, data analyst",
+    "name": "BI-аналитик, аналитик данных",
     "techName": "bi_analyst"
   },
   {
-    "name": "DevOps-engineer",
+    "name": "Инженер DevOps",
     "techName": "devops_engineer"
   },
   {
-    "name": "Analyst",
+    "name": "Аналитик",
     "techName": "analyst"
   },
   {
-    "name": "Art director, creative director",
+    "name": "Арт-директор, креативный директор",
     "techName": "art_director"
   },
   {
-    "name": "Business analyst",
+    "name": "Бизнес-аналитик",
     "techName": "business_analyst"
   },
   {
-    "name": "Game designer",
+    "name": "Геймдизайнер",
     "techName": "game_designer"
   },
   {
-    "name": "Data scientist",
+    "name": "Специалист по данным (Data Scientist)",
     "techName": "data_scientist"
   },
   {
-    "name": "Designer, artist",
+    "name": "Дизайнер, художник",
     "techName": "designer_artist"
   },
   {
-    "name": "Product manager",
+    "name": "Продакт-менеджер",
     "techName": "product_manager"
   },
   {
-    "name": "Methodologist",
+    "name": "Методист",
     "techName": "methodologist"
   },
   {
-    "name": "Programmer, developer",
+    "name": "Программист, разработчик",
     "techName": "developer"
   },
   {
-    "name": "Product analyst",
+    "name": "Продакт-аналитик",
     "techName": "product_analyst"
   },
   {
-    "name": "Head of development team",
+    "name": "Руководитель команды разработки",
     "techName": "development_team_lead"
   },
   {
-    "name": "Project manager",
+    "name": "Проектный менеджер",
     "techName": "project_manager"
   },
   {
-    "name": "Network engineer",
+    "name": "Сетевой инженер",
     "techName": "network_engineer"
   },
   {
-    "name": "System administrator",
+    "name": "Системный администратор",
     "techName": "system_administrator"
   },
   {
-    "name": "Systems analyst",
+    "name": "Системный аналитик",
     "techName": "system_analyst"
   },
   {
-    "name": "System engineer",
+    "name": "Инженер-системотехник",
     "techName": "system_engineer"
   },
   {
-    "name": "Technical support specialist",
+    "name": "Специалист технической поддержки",
     "techName": "technical_support_specialist"
   },
   {
-    "name": "Tester",
+    "name": "Тестировщик",
     "techName": "tester"
   },
   {
-    "name": "Technical writer",
+    "name": "Технический писатель",
     "techName": "technical_writer"
   },
   {
-    "name": "Artist, actor, animator",
+    "name": "Художник, актер, аниматор",
     "techName": "artist_actor_animator"
   },
   {
-    "name": "Videographer, video editor",
+    "name": "Видеограф, видеомонтажёр",
     "techName": "video_operator_video_editor"
   },
   {
-    "name": "Journalist, correspondent",
+    "name": "Журналист, корреспондент",
     "techName": "journalist_correspondent"
   },
   {
-    "name": "Copywriter, editor, proofreader",
+    "name": "Копирайтер, редактор, корректор",
     "techName": "copywriter_editor_proofreader"
   },
   {
-    "name": "Producer",
+    "name": "Продюсер",
     "techName": "producer"
   },
   {
-    "name": "Director, screenwriter",
+    "name": "Режиссёр, сценарист",
     "techName": "director_screenwriter"
   },
   {
-    "name": "Photographer, retoucher",
+    "name": "Фотограф, ретушер",
     "techName": "photographer_retoucher"
   },
   {
-    "name": "Event manager",
+    "name": "Менеджер мероприятий",
     "techName": "event_manager"
   },
   {
-    "name": "PR manager",
+    "name": "PR-менеджер",
     "techName": "pr_manager"
   },
   {
-    "name": "SMM manager, content manager",
+    "name": "SMM-менеджер, контент-менеджер",
     "techName": "smm_manager_content_manager"
   },
   {
-    "name": "Marketing analyst",
+    "name": "Маркетинговый аналитик",
     "techName": "marketing_analyst"
   },
   {
-    "name": "Marketing manager internet marketer",
+    "name": "Маркетолог, интернет-маркетолог",
     "techName": "marketing_manager_digital_marketer"
   },
   {
-    "name": "Partner relations manager",
+    "name": "Менеджер по работе с партнерами",
     "techName": "partner_manager"
   },
   {
-    "name": "Promoter",
+    "name": "Промоутер",
     "techName": "promoter"
   },
   {
-    "name": "Medical representative",
+    "name": "Медицинский представитель",
     "techName": "medical_representative"
   },
   {
-    "name": "Certification specialist",
+    "name": "Специалист по сертификации",
     "techName": "certification_specialist"
   },
   {
-    "name": "Pharmacist",
+    "name": "Фармацевт",
     "techName": "pharmacist"
   },
   {
-    "name": "Business trainer",
+    "name": "Бизнес-тренер",
     "techName": "business_trainer"
   },
   {
-    "name": "Methodist",
+    "name": "Методист",
     "techName": "methodist"
-  },
-  {
-    "name": "Psychologist",
-    "techName": "psychologist"
-  },
-  {
-    "name": "Teacher, lecturer, pedagogue",
-    "techName": "teacher_pedagogue"
-  },
-  {
-    "name": "Real estate agent",
-    "techName": "real_estate_agent"
-  },
-  {
-    "name": "Cashier-operator",
-    "techName": "cashier_operator"
-  },
-  {
-    "name": "Sales coordinator",
-    "techName": "sales_department_coordinator"
-  },
-  {
-    "name": "Credit specialist",
-    "techName": "credit_specialist"
-  },
-  {
-    "name": "Call center operator, contact center specialist",
-    "techName": "call_center_operator"
-  },
-  {
-    "name": "Sales consultant, sales cashier",
-    "techName": "sales_consultant_cashier"
-  },
-  {
-    "name": "Head of customer service department",
-    "techName": "customer_service_department_manager"
-  },
-  {
-    "name": "Head of sales department",
-    "techName": "sales_department_manager"
-  },
-  {
-    "name": "Insurance agent",
-    "techName": "insurance_agent"
-  },
-  {
-    "name": "Sales representative",
-    "techName": "sales_representative"
-  },
-  {
-    "name": "R&D engineer",
-    "techName": "r_and_d_engineer"
-  },
-  {
-    "name": "Quality engineer",
-    "techName": "quality_engineer"
-  },
-  {
-    "name": "Occupational health and safety engineer, environmental engineer",
-    "techName": "safety_engineer_ecologist"
-  },
-  {
-    "name": "Maintenance engineer",
-    "techName": "operations_engineer"
-  },
-  {
-    "name": "Design engineer, design engineer",
-    "techName": "design_engineer"
-  },
-  {
-    "name": "Electronics engineer, electronics engineer",
-    "techName": "electronics_engineer"
-  },
-  {
-    "name": "Power engineer, electrical engineer",
-    "techName": "electrical_engineer"
-  },
-  {
-    "name": "Quality control controller",
-    "techName": "quality_control_inspector"
-  },
-  {
-    "name": "Equipment repair technician",
-    "techName": "equipment_repair_technician"
-  },
-  {
-    "name": "Metrologist",
-    "techName": "metrologist"
-  },
-  {
-    "name": "Mechanic",
-    "techName": "mechanic"
-  },
-  {
-    "name": "Production line operator",
-    "techName": "production_line_operator"
-  },
-  {
-    "name": "CNC machine operator",
-    "techName": "cnc_operator"
-  },
-  {
-    "name": "Welder",
-    "techName": "welder"
-  },
-  {
-    "name": "Service engineer, mechanical engineer",
-    "techName": "service_engineer"
-  },
-  {
-    "name": "Locksmith, plumber",
-    "techName": "locksmith_plumber"
-  },
-  {
-    "name": "Turner, milling machine, grinder",
-    "techName": "turner_miller_grinder"
-  },
-  {
-    "name": "Seamstress, tailor, cutter",
-    "techName": "seamstress_tailor_cutter"
-  },
-  {
-    "name": "Electrician",
-    "techName": "electrician"
-  },
-  {
-    "name": "Car electrician",
-    "techName": "automotive_technician_electrician"
-  },
-  {
-    "name": "Loader",
-    "techName": "loader"
-  },
-  {
-    "name": "Storekeeper",
-    "techName": "storekeeper"
-  },
-  {
-    "name": "Painter, plasterer",
-    "techName": "painter_plasterer"
-  },
-  {
-    "name": "Mounter",
-    "techName": "mounter"
-  },
-  {
-    "name": "Laborer",
-    "techName": "laborer"
-  },
-  {
-    "name": "Packer, picker",
-    "techName": "packer_order_picker"
-  },
-  {
-    "name": "Store administrator, sales floor administrator",
-    "techName": "store_administrator"
-  },
-  {
-    "name": "Store director, chain store director",
-    "techName": "store_director"
-  },
-  {
-    "name": "Merchandiser",
-    "techName": "merchandiser"
-  },
-  {
-    "name": "Supervisor",
-    "techName": "supervisor"
-  },
-  {
-    "name": "Commodity expert",
-    "techName": "merchandise_specialist"
-  },
-  {
-    "name": "Agronome",
-    "techName": "agronomist"
-  },
-  {
-    "name": "Veterinarian",
-    "techName": "veterinarian"
-  },
-  {
-    "name": "Zoo technician",
-    "techName": "zootechnician"
-  },
-  {
-    "name": "Cosmetologist",
-    "techName": "cosmetologist"
-  },
-  {
-    "name": "Massagist",
-    "techName": "masseur"
-  },
-  {
-    "name": "Nail service master",
-    "techName": "nail_technician"
-  },
-  {
-    "name": "Hairdresser",
-    "techName": "hairdresser"
-  },
-  {
-    "name": "Fitness trainer, gym instructor",
-    "techName": "fitness_trainer_gym_instructor"
-  },
-  {
-    "name": "Manager/strategy consultant",
-    "techName": "strategy_manager_consultant"
-  },
-  {
-    "name": "Financial analyst, investment analyst",
-    "techName": "financial_investment_analyst"
-  },
-  {
-    "name": "Underwriter",
-    "techName": "underwriter"
-  },
-  {
-    "name": "Appraiser",
-    "techName": "appraiser"
-  },
-  {
-    "name": "Architect",
-    "techName": "architect"
-  },
-  {
-    "name": "Chief project engineer",
-    "techName": "chief_project_engineer"
-  },
-  {
-    "name": "VET engineer, cost estimate engineer",
-    "techName": "pto_engineer_estimator"
-  },
-  {
-    "name": "Foreman, construction and installation master",
-    "techName": "site_foreman"
-  },
-  {
-    "name": "Construction project manager",
-    "techName": "construction_project_manager"
-  },
-  {
-    "name": "Flight attendant",
-    "techName": "flight_attendant"
-  },
-  {
-    "name": "Dispatcher",
-    "techName": "dispatcher"
-  },
-  {
-    "name": "Logistics manager foreign trade manager",
-    "techName": "logistics_manager_ved"
-  },
-  {
-    "name": "Head of warehouse",
-    "techName": "warehouse_manager"
-  },
-  {
-    "name": "Tourism manager",
-    "techName": "tourism_manager"
-  },
-  {
-    "name": "Restaurant manager",
-    "techName": "restaurant_manager"
-  },
-  {
-    "name": "Cook, baker, confectioner",
-    "techName": "cook_baker_confectioner"
-  },
-  {
-    "name": "Hostess",
-    "techName": "hostess"
-  },
-  {
-    "name": "Compensation and benefits manager",
-    "techName": "compensation_benefits_manager"
-  },
-  {
-    "name": "HR manager",
-    "techName": "hr_manager_personal"
-  },
-  {
-    "name": "HR specialist",
-    "techName": "hr_specialist"
-  },
-  {
-    "name": "Recruitment specialist",
-    "techName": "recruitment_specialist"
-  },
-  {
-    "name": "Auditor",
-    "techName": "auditor"
-  },
-  {
-    "name": "Accountant",
-    "techName": "accountant"
-  },
-  {
-    "name": "Treasurer",
-    "techName": "treasurer"
-  },
-  {
-    "name": "Compliance manager",
-    "techName": "compliance_manager"
-  },
-  {
-    "name": "Debt collection specialist",
-    "techName": "debt_collection_specialist"
-  },
-  {
-    "name": "Financial controller",
-    "techName": "financial_controller"
-  },
-  {
-    "name": "Financial manager",
-    "techName": "financial_manager"
-  },
-  {
-    "name": "Economist",
-    "techName": "economist"
-  },
-  {
-    "name": "Lawyers",
-    "techName": "lawyer"
-  },
-  {
-    "name": "Legal advisor",
-    "techName": "legal_consultant"
-  },
-  {
-    "name": "Jurist",
-    "techName": "jurist"
-  },
-  {
-    "name": "Other",
-    "techName": "other"
   }
 ]

@@ -58,7 +58,7 @@
         <label class="block text-sm font-medium text-black-700">Тип занятости</label>
         <select v-model="form.employmentType" multiple
                 class="mt-1 block w-full px-4 py-2 border border-black-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-500">
-          <option v-for="type in employmentTypes" :key="type.id" :value="type.id">{{ type.tech_name }}</option>
+          <option v-for="type in employmentTypes" :key="type.id" :value="type.id">{{ type.name }}</option>
         </select>
       </div>
 
@@ -67,17 +67,28 @@
         <label class="block text-sm font-medium text-black-700">Специализации</label>
         <select v-model="form.specializations" multiple
                 class="mt-1 block w-full px-4 py-2 border border-black-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-500">
-          <option v-for="spec in specializations" :key="spec.id" :value="spec.id">{{ spec.tech_name }}</option>
+          <option v-for="spec in specializations" :key="spec.id" :value="spec.id">{{ spec.name }}</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-black-700">График</label>
+        <select v-model="form.workSchedule" multiple
+                class="mt-1 block w-full px-4 py-2 border border-black-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-500">
+          <option v-for="spec in workSchedule" :key="spec.id" :value="spec.id">{{ spec.name }}</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-black-700">Опыт работы</label>
+        <select v-model="form.workExperience"
+                class="mt-1 block w-full px-4 py-2 border border-black-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-500">
+          <option v-for="spec in workExperience" :key="spec.id" :value="spec.id">{{ spec.name }}</option>
         </select>
       </div>
 
       <!-- Чекбоксы -->
       <div class="flex flex-col sm:flex-row gap-4">
-        <label class="inline-flex items-center">
-          <input v-model="form.archived" type="checkbox"
-                 class="rounded border-black-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500">
-          <span class="ml-2">Архивная</span>
-        </label>
         <label class="inline-flex items-center">
           <input v-model="form.isActive" type="checkbox"
                  class="rounded border-black-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500">
@@ -140,14 +151,19 @@ const form = reactive({
 
   employmentType: [],
   specializations: [],
+  workSchedule:[],
+  workExperience:[],
 
-  archived: false,
+
   isActive: true,
 })
 
 // Состояния для параметров, полученных из API
 const employmentTypes = ref([])
 const specializations = ref([])
+const workSchedule = ref([])
+const workExperience = ref([])
+
 
 // Функция для загрузки параметров из API
 const loadParameters = async (vacancyParameter, targetArray) => {
@@ -164,6 +180,8 @@ const loadParameters = async (vacancyParameter, targetArray) => {
 onMounted(() => {
   loadParameters('employment_type', employmentTypes)
   loadParameters('specializations', specializations)
+  loadParameters('work_schedule', workSchedule)
+  loadParameters('work_experience', workExperience)
 })
 
 const submit = async () => {

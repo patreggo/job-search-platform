@@ -3,11 +3,10 @@
 namespace App\Repository\Vacancy;
 
 use App\Entity\Vacancy\VacancyIncomePaymentPeriod;
-use Common\Repository\AbstractRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends AbstractRepository<VacancyIncomePaymentPeriod>
  *
  * @method VacancyIncomePaymentPeriod|null find($id, $lockMode = null, $lockVersion = null)
  * @method VacancyIncomePaymentPeriod|null findOneBy(array $criteria, array $orderBy = null)

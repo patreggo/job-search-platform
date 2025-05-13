@@ -22,8 +22,8 @@ class VacancyIncomePayment extends AbstractVacancyParameters
     #[Groups(['read'])]
     protected ?int $id = null;
 
-    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
-    #[Groups(['read'])]
+    #[ORM\Column(length: 255)]
+    #[Groups('read')]
     private ?string $name = null;
 
     /**

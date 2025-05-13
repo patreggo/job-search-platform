@@ -1,18 +1,18 @@
 [
   {
-    "name": "Daily",
+    "name": "Ежедневно",
     "techName": "daily"
   },
   {
-    "name": "Once a week",
+    "name": "Раз в неделю",
     "techName": "once_a_week"
   },
   {
-    "name": "Once in two weeks",
+    "name": "Раз в 2 недели",
     "techName": "every_two_weeks"
   },
   {
-    "name": "Once a month",
+    "name": "Раз в месяц",
     "techName": "once_a_month"
   }
 ]

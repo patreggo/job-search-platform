@@ -1,22 +1,22 @@
 [
   {
-    "name": "Full employment",
+    "name": "Полная занятость",
     "techName": "full_employment"
   },
   {
-    "name": "Internship",
+    "name": "Стажировка",
     "techName": "internship"
   },
   {
-    "name": "Part-time employment",
+    "name": "Частичная занятость",
     "techName": "part_time_employment"
   },
   {
-    "name": "Project work",
+    "name": "Проектная работа",
     "techName": "project_work"
   },
   {
-    "name": "Volunteering",
+    "name": "Волонтерство",
     "techName": "volunteering"
   }
 ]

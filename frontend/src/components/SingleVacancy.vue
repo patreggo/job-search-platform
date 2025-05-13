@@ -22,9 +22,19 @@
       <p class="text-black">{{ vacancy.requirements }}</p>
     </div>
 
-    <div>
+    <div class="mb-4">
       <strong>Обязанности:</strong>
       <p class="text-black">{{ vacancy.responsibilities }}</p>
+    </div>
+
+    <div class="mb-4">
+      <strong>Специальность:</strong>
+      <p class="text-black">{{ vacancy.specializations?.map(s => s.name).join(', ')}}</p>
+    </div>
+
+    <div class="mb-4">
+      <strong>Специальность:</strong>
+      <p class="text-black">{{ vacancy.employment_type?.map(t => t.name).join(', ')}}</p>
     </div>
   </div>
 

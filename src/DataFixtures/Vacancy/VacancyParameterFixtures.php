@@ -60,7 +60,6 @@ class VacancyParameterFixtures extends AbstractFixtures
         foreach ($this->getFixturesData(__DIR__, 'communication_type.json') as $vacancyParameter) {
             $vacancyParameterEntity = new VacancyCommunicationType();
             $this->setData($vacancyParameterEntity, $vacancyParameter, $i);
-
             $manager->persist($vacancyParameterEntity);
             $i++;
         }

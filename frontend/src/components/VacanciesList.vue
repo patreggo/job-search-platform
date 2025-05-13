@@ -38,9 +38,9 @@
 
         <!-- Фильтры (заглушка, замените на реальные данные) -->
         <div class="text-gray-600 text-sm mb-4">
-          <span>Специализации: {{ vacancy.specializations?.map(s => s.tech_name).join(', ') || 'Не указаны' }}</span>
+          <span>Специализации: {{ vacancy.specializations?.map(s => s.name).join(', ') || 'Не указаны' }}</span>
           <br />
-          <span>Тип трудоустройства: {{ vacancy.employmentType?.map(t => t.tech_name).join(', ') || 'Не указаны' }}</span>
+          <span>Тип трудоустройства: {{ vacancy.employment_type?.map(t => t.name).join(', ') || 'Не указаны' }}</span>
         </div>
 
         <!-- Кнопка "Apply" -->
@@ -49,14 +49,6 @@
             @click="applyVacancy(vacancy.id)"
         >
           Apply
-        </button>
-
-        <!-- Кнопка "Reset" (заглушка) -->
-        <button
-            class="w-full bg-gray-200 text-gray-700 py-2 rounded mt-2 hover:bg-gray-300 transition"
-            @click="resetVacancy"
-        >
-          Reset
         </button>
       </router-link>
     </div>
