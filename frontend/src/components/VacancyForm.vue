@@ -138,7 +138,10 @@ button:hover {
 
 <script setup>
 import { reactive, onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import api from '../api.js'
+
+const router = useRouter()
 
 const form = reactive({
   name: '',
@@ -192,7 +195,7 @@ const submit = async () => {
         'Content-Type': 'application/json'
       }
     })
-    alert(`Вакансия создана с ID ${data.id}`)
+    await router.push(`/vacancy/${data.id}`)
   } catch (e) {
     console.error(e.response?.data || e)
     alert('Ошибка при создании вакансии')

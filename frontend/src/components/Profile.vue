@@ -4,7 +4,7 @@
     <h2 class="text-xl font-bold mb-4 text-black">Профиль</h2>
     <div v-if="user" class="space-y-3 text-black">
       <p><strong>Имя:</strong> {{ user.first_name }}</p>
-      <p><strong>Фамилия:</strong> {{ user.last_name }}</p>
+      <p><strong>Фамилия:</strong> {{ user._last_name }}</p>
       <p><strong>Email:</strong> {{ user.email }}</p>
       <p><strong>Телефон:</strong> {{ user.phone }}</p>
 
