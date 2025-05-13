@@ -4,27 +4,27 @@
 
     <div class="mb-4">
       <strong>Описание:</strong>
-      <p>{{ vacancy.description }}</p>
+      <p class="text-black">{{ vacancy.description }}</p>
     </div>
 
     <div class="mb-4">
       <strong>Зарплата:</strong>
-      <p>от {{ vacancy.income_min }} до {{ vacancy.income_max }} ₽</p>
+      <p class="text-black">от {{ vacancy.income_min }} до {{ vacancy.income_max }} ₽</p>
     </div>
 
     <div class="mb-4">
       <strong>Адрес работы:</strong>
-      <p>{{ vacancy.work_address }}</p>
+      <p class="text-black">{{ vacancy.work_address }}</p>
     </div>
 
     <div class="mb-4">
       <strong>Требования:</strong>
-      <p>{{ vacancy.requirements }}</p>
+      <p class="text-black">{{ vacancy.requirements }}</p>
     </div>
 
     <div>
       <strong>Обязанности:</strong>
-      <p>{{ vacancy.responsibilities }}</p>
+      <p class="text-black">{{ vacancy.responsibilities }}</p>
     </div>
   </div>
 

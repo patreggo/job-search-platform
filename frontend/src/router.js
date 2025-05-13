@@ -13,7 +13,7 @@ const routes = [
     { path: '/register', component: Register },
     {
         path: '/',
-        component: Home,
+        component: VacanciesList,
         meta: { requiresAuth: true }
     },
     {
