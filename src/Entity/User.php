@@ -6,7 +6,6 @@ use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
-use App\Entity\Money\Currency;
 use App\Entity\Resume\Resume;
 use App\Entity\Vacancy\Vacancy;
 use App\Repository\UserRepository;
@@ -105,10 +104,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\ManyToOne(targetEntity: City::class)]
     private ?City $city = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?Currency $currency = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Company::class)]
     private Collection $companies;
@@ -444,25 +439,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $company->setUser(null);
             }
         }
-
-        return $this;
-    }
-
-    /**
-     * @return Currency|null
-     */
-    public function getCurrency(): ?Currency
-    {
-        return $this->currency;
-    }
-
-    /**
-     * @param Currency|null $currency
-     * @return $this
-     */
-    public function setCurrency(?Currency $currency): self
-    {
-        $this->currency = $currency;
 
         return $this;
     }

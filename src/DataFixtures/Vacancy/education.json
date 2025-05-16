@@ -1,14 +1,14 @@
 [
   {
-    "name": "Higher",
+    "name": "Высшее",
     "techName": "higher"
   },
   {
-    "name": "Secondary vocational",
+    "name": "Среднее профессиональное",
     "techName": "secondary_vocational"
   },
   {
-    "name": "Average",
+    "name": "Среднее",
     "techName": "average"
   }
 ]

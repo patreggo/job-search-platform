@@ -3,7 +3,9 @@
 namespace Api\Resume;
 
 use App\Entity\Resume\Resume;
+use App\Form\Resume\ResumeApiType;
 use App\Repository\Resume\ResumeRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,14 +37,38 @@ class ResumeApiController extends AbstractFOSRestController
         return $this->handleView($this->view($data, Response::HTTP_OK));
     }
 
-    #[Route('/new', name: 'new', methods: ['POST'])]
+    #[Rest\Post('/new', name: 'new')]
     public function newResume(
         Request              $request,
+        EntityManagerInterface $entityManager,
     ): Response
     {
         $resume = new Resume();
         $resume->setUser($this->getUser());
+        $form = $this->createForm(ResumeApiType::class, $resume);
+        $data = json_decode($request->getContent(), true);
+        $form->submit($data);
+        if ($form->isSubmitted() && $form->isValid()) {
+            foreach ($resume->getWorkPlace() as $workPlace) {
+                $workPlace->setResume($resume);
+            }
 
+            foreach ($resume->getEducation() as $education) {
+                $education->setResume($resume);
+            }
+            $entityManager->persist($resume);
+            $entityManager->flush();
+            return $this->handleView($this->view($resume, Response::HTTP_CREATED));
+        }
+        return $this->handleView($this->view($form->getErrors(), Response::HTTP_BAD_REQUEST));
+    }
 
+    #[Rest\Get('/user/personal', name: 'personal')]
+    public function userResume(
+        ResumeRepository $resumeRepository,
+    ): Response
+    {
+        $data = $resumeRepository->findBy(['user' => $this->getUser()->getId()]);
+        return $this->handleView($this->view($data, Response::HTTP_OK));
     }
 }

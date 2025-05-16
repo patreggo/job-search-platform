@@ -4,16 +4,12 @@ namespace App\Entity\Resume;
 
 use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Metadata\ApiFilter;
-use ApiPlatform\Metadata\ApiResource;
 use App\Entity\City;
 use App\Entity\Country;
-use App\Entity\Money\Currency;
 use App\Entity\User;
-use App\Entity\Vacancy\VacancyCommunicationType;
 use App\Entity\Vacancy\VacancyCompanyIndustry;
 use App\Entity\Vacancy\VacancyEmploymentType;
 use App\Entity\Vacancy\VacancyIncomePayment;
-use App\Entity\Vacancy\VacancyInteractionLanguages;
 use App\Entity\Vacancy\VacancySpecializations;
 use App\Entity\Vacancy\VacancyWorkSchedule;
 use App\Repository\Resume\ResumeRepository;
@@ -31,11 +27,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ResumeRepository::class)]
 #[ORM\HasLifecycleCallbacks]
-#[ApiResource(
-    routePrefix: '/admin',
-    normalizationContext: ['groups' => ['read']],
-    denormalizationContext: ['groups' => ['write']],
-)]
 #[ApiFilter(filterClass: BooleanFilter::class, properties: ['isModerated'])]
 class Resume
 {
@@ -56,9 +47,6 @@ class Resume
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $desiredSalary = null;
-
-    #[ORM\ManyToOne(targetEntity: Currency::class)]
-    private ?Currency $salaryCurrency = null;
 
     #[ORM\ManyToOne(targetEntity: VacancyIncomePayment::class)]
     private ?VacancyIncomePayment $incomePayment = null;
@@ -108,9 +96,6 @@ class Resume
     #[Assert\NotNull]
     private ?VacancyWorkSchedule $workSchedule = null;
 
-    #[ORM\ManyToMany(targetEntity: DrivingLicenseCategory::class)]
-    private Collection $drivingLicenseCategory;
-
     #[ORM\Column(nullable: true)]
     private ?bool $havePersonalCar = false;
 
@@ -118,20 +103,10 @@ class Resume
     #[ORM\JoinTable(name: "resume_work_permit_country")]
     private Collection $workPermitCountry;
 
-    #[ORM\ManyToOne(targetEntity: VacancyInteractionLanguages::class)]
-    private ?VacancyInteractionLanguages $nativeInteractionLanguage = null;
-
-    #[ORM\ManyToMany(targetEntity: VacancyInteractionLanguages::class)]
-    private Collection $additionalLanguages;
-
     #[ORM\OneToMany(targetEntity: AwardAndAchievement::class, mappedBy: 'resume', cascade: ["persist", "remove"], orphanRemoval: true)]
     #[Assert\Count(max: 10)]
     #[Assert\Valid]
     private Collection $awardAndAchievement;
-
-    #[ORM\ManyToMany(targetEntity: VacancyCommunicationType::class)]
-    #[Assert\Count(min: 1)]
-    private Collection $communicationType;
 
     #[ORM\ManyToOne(targetEntity: Gender::class)]
     private ?Gender $gender = null;
@@ -155,14 +130,11 @@ class Resume
         $this->citizenship = new ArrayCollection();
         $this->relocationCity = new ArrayCollection();
         $this->employmentType = new ArrayCollection();
-        $this->drivingLicenseCategory = new ArrayCollection();
         $this->workPermitCountry = new ArrayCollection();
-        $this->communicationType = new ArrayCollection();
         $this->awardAndAchievement = new ArrayCollection();
         $this->education = new ArrayCollection();
         $this->workPlace = new ArrayCollection();
         $this->vacancyResponses = new ArrayCollection();
-        $this->additionalLanguages = new ArrayCollection();
     }
 
     /**
@@ -207,25 +179,6 @@ class Resume
     public function setDesiredSalary(?string $desiredSalary): static
     {
         $this->desiredSalary = $desiredSalary;
-
-        return $this;
-    }
-
-    /**
-     * @return Currency|null
-     */
-    public function getSalaryCurrency(): ?Currency
-    {
-        return $this->salaryCurrency;
-    }
-
-    /**
-     * @param Currency|null $salaryCurrency
-     * @return $this
-     */
-    public function setSalaryCurrency(?Currency $salaryCurrency): static
-    {
-        $this->salaryCurrency = $salaryCurrency;
 
         return $this;
     }
@@ -544,38 +497,6 @@ class Resume
     }
 
     /**
-     * @return Collection<int, DrivingLicenseCategory>
-     */
-    public function getDrivingLicenseCategory(): Collection
-    {
-        return $this->drivingLicenseCategory;
-    }
-
-    /**
-     * @param DrivingLicenseCategory $drivingLicenseCategory
-     * @return $this
-     */
-    public function addDrivingLicenseCategory(DrivingLicenseCategory $drivingLicenseCategory): static
-    {
-        if (!$this->drivingLicenseCategory->contains($drivingLicenseCategory)) {
-            $this->drivingLicenseCategory->add($drivingLicenseCategory);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param DrivingLicenseCategory $drivingLicenseCategory
-     * @return $this
-     */
-    public function removeDrivingLicenseCategory(DrivingLicenseCategory $drivingLicenseCategory): static
-    {
-        $this->drivingLicenseCategory->removeElement($drivingLicenseCategory);
-
-        return $this;
-    }
-
-    /**
      * @return bool|null
      */
     public function isHavePersonalCar(): ?bool
@@ -627,57 +548,6 @@ class Resume
     }
 
     /**
-     * @return VacancyInteractionLanguages|null
-     */
-    public function getNativeInteractionLanguage(): ?VacancyInteractionLanguages
-    {
-        return $this->nativeInteractionLanguage;
-    }
-
-    /**
-     * @param VacancyInteractionLanguages|null $nativeInteractionLanguage
-     * @return $this
-     */
-    public function setNativeInteractionLanguage(?VacancyInteractionLanguages $nativeInteractionLanguage): static
-    {
-        $this->nativeInteractionLanguage = $nativeInteractionLanguage;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection
-     */
-    public function getAdditionalLanguages(): Collection
-    {
-        return $this->additionalLanguages;
-    }
-
-    /**
-     * @param VacancyInteractionLanguages $additionalLanguage
-     * @return $this
-     */
-    public function addAdditionalLanguage(VacancyInteractionLanguages $additionalLanguage): static
-    {
-        if (!$this->additionalLanguages->contains($additionalLanguage)) {
-            $this->additionalLanguages->add($additionalLanguage);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param VacancyInteractionLanguages $additionalLanguage
-     * @return $this
-     */
-    public function removeAdditionalLanguage(VacancyInteractionLanguages $additionalLanguage): static
-    {
-        $this->additionalLanguages->removeElement($additionalLanguage);
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, AwardAndAchievement>
      */
     public function getAwardAndAchievement(): Collection
@@ -712,38 +582,6 @@ class Resume
                 $awardAndAchievement->setAward(null);
             }
         }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, VacancyCommunicationType>
-     */
-    public function getCommunicationType(): Collection
-    {
-        return $this->communicationType;
-    }
-
-    /**
-     * @param VacancyCommunicationType $communicationType
-     * @return $this
-     */
-    public function addCommunicationType(VacancyCommunicationType $communicationType): static
-    {
-        if (!$this->communicationType->contains($communicationType)) {
-            $this->communicationType->add($communicationType);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param VacancyCommunicationType $communicationType
-     * @return $this
-     */
-    public function removeCommunicationType(VacancyCommunicationType $communicationType): static
-    {
-        $this->communicationType->removeElement($communicationType);
 
         return $this;
     }

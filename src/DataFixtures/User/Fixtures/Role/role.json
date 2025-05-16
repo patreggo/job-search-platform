@@ -1,0 +1,10 @@
+[
+  {
+    "name": "ROLE_USER",
+    "displayName": "Пользователь"
+  },
+  {
+    "name": "ROLE_USER_AUTHOR",
+    "displayName": "Пользователь-автор"
+  }
+]

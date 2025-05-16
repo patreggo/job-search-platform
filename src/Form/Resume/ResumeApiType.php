@@ -4,22 +4,20 @@ namespace App\Form\Resume;
 
 use App\Entity\City;
 use App\Entity\Country;
-use App\Entity\Money\Currency;
-use App\Entity\Resume\DrivingLicenseCategory;
+
+use App\Entity\Resume\AwardAndAchievement;
 use App\Entity\Resume\Gender;
 use App\Entity\Resume\Resume;
-use App\Entity\User;
-use App\Entity\Vacancy\VacancyCommunicationType;
 use App\Entity\Vacancy\VacancyCompanyIndustry;
 use App\Entity\Vacancy\VacancyEmploymentType;
 use App\Entity\Vacancy\VacancyIncomePayment;
-use App\Entity\Vacancy\VacancyInteractionLanguages;
 use App\Entity\Vacancy\VacancySpecializations;
 use App\Entity\Vacancy\VacancyWorkSchedule;
 use App\Form\AppAbstractType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -55,16 +53,7 @@ class ResumeApiType extends AppAbstractType
                     'scale' => 2,
                 ]
             )
-            ->add(
-                'salaryCurrency',
-                EntityType::class,
-                [
-                    'label' => 'currency',
-                    'class' => Currency::class,
-                    'choice_label' => 'name'
-                ]
-            )
-            ->add(
+                        ->add(
                 'gender',
                 EntityType::class,
                 [
@@ -134,25 +123,15 @@ class ResumeApiType extends AppAbstractType
                     'multiple' => true
                 ]
             )
-            ->add('workPlace', EntityType::class, [
-                'by_reference' => false,
-                'required' => false,
-                'label' => 'work_place',
+            ->add('workPlace', CollectionType::class, [
                 'entry_type' => WorkPlaceApiType::class,
                 'entry_options' => ['label' => false],
                 'allow_add' => true,
-                'allow_delete' => true,
-                'allow_move' => false
             ])
-            ->add('education', EntityType::class, [
-                'by_reference' => false,
-                'required' => true,
-                'label' => 'education',
+            ->add('education', CollectionType::class, [
                 'entry_type' => EducationApiType::class,
                 'entry_options' => ['label' => false],
                 'allow_add' => true,
-                'allow_delete' => true,
-                'allow_move' => false,
             ])
             ->add(
                 'additionalInformation',
@@ -190,17 +169,7 @@ class ResumeApiType extends AppAbstractType
                     'choice_label' => 'name.translatorKey',
                 ]
             )
-            ->add(
-                'drivingLicenseCategory',
-                EntityType::class,
-                [
-                    'required' => true,
-                    'label' => 'driving_license_category',
-                    'class' => DrivingLicenseCategory::class,
-                    'choice_label' => 'name',
-                    'multiple' => true
-                ]
-            )
+
             ->add(
                 'havePersonalCar',
                 CheckboxType::class,
@@ -219,45 +188,12 @@ class ResumeApiType extends AppAbstractType
                     'multiple' => true
                 ]
             )
-            ->add(
-                'nativeInteractionLanguage',
-                EntityType::class,
-                [
-                    'label' => 'native_interaction_language',
-                    'class' => VacancyInteractionLanguages::class,
-                    'choice_label' => 'name.translatorKey',
-                ]
-            )
-            ->add(
-                'additionalLanguages',
-                EntityType::class,
-                [
-                    'label' => 'additional_languages',
-                    'class' => VacancyInteractionLanguages::class,
-                    'choice_label' => 'name.translatorKey',
-                    'multiple' => true
-                ]
-            )
             ->add('awardAndAchievement', EntityType::class, [
-                'by_reference' => false,
-                'required' => false,
-                'label' => 'award_and_achievement',
-                'entry_type' => AwardAndAchievementApiType::class,
-                'entry_options' => ['label' => false],
-                'allow_add' => true,
-                'allow_delete' => true,
-                'allow_move' => false,
+                'label' => 'income_payment',
+                'class' => AwardAndAchievement::class,
+                'choice_label' => 'name.translatorKey',
+                'multiple' => true
             ])
-            ->add(
-                'communicationType',
-                EntityType::class,
-                [
-                    'label' => 'communication_type',
-                    'class' => VacancyCommunicationType::class,
-                    'choice_label' => 'name.translatorKey',
-                    'multiple' => true
-                ]
-            )
             ->add(
                 'isActive',
                 CheckboxType::class,
@@ -279,6 +215,7 @@ class ResumeApiType extends AppAbstractType
     {
         $resolver->setDefaults([
             'data_class' => Resume::class,
+            'csrf_protection' => false,
         ]);
     }
 }

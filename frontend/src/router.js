@@ -6,7 +6,11 @@ import Login from './components/Login.vue'
 import Register from './components/Register.vue'
 import { isAuthenticated } from './auth'
 import Profile from "./components/Profile.vue";
-import Home from './components/Home.vue'
+import ResumeForm from "./components/ResumeForm.vue";
+import SingleResume from "./components/SingleResume.vue";
+import VacancyResponseForm from "./components/VacancyResponseForm.vue";
+import ResumeList from "./components/ResumeList.vue";
+import VacancyResponeList from "./components/VacancyResponeList.vue";
 
 const routes = [
     { path: '/login', component: Login },
@@ -17,7 +21,7 @@ const routes = [
         meta: { requiresAuth: true }
     },
     {
-        path: '/new',
+        path: '/vacancy/new',
         component: VacancyForm,
         meta: { requiresAuth: true }
     },
@@ -35,6 +39,28 @@ const routes = [
         path: '/vacancies',
         component: VacanciesList,
         meta: {requiresAuth: true}
+    },
+    {
+        path: '/resume/new',
+        component: ResumeForm,
+        meta: {requiresAuth: true}
+    },
+    {
+        path: '/resume/:id',
+        component: SingleResume,
+        meta: {requiresAuth: true}
+    },
+    {
+        path: '/vacancy_response/new',
+        component: VacancyResponseForm,
+    },
+    {
+        path: '/resume/user/personal',
+        component: ResumeList
+    },
+    {
+        path: '/vacancy_response/user/personal',
+        component: VacancyResponeList
     }
 ]
 

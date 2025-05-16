@@ -63,9 +63,6 @@ class Vacancy
     #[Assert\NotNull]
     private ?string $description = null;
 
-    #[ORM\ManyToMany(targetEntity: VacancyRegistrationMethods::class)]
-    private Collection $registrationMethods;
-
     #[ORM\Column(type: 'boolean')]
     private bool $isPartTimeJob = false;
 
@@ -79,9 +76,6 @@ class Vacancy
     #[ORM\Column(type: Types::DECIMAL, precision: 20, scale: 2, nullable: true)]
     #[Groups(['read'])]
     private ?string $incomeMax = null;
-
-    #[ORM\ManyToOne(targetEntity: VacancyIncomePaymentPeriod::class)]
-    private ?VacancyIncomePaymentPeriod $incomePaymentPeriod = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $img = null;
@@ -128,9 +122,6 @@ class Vacancy
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?DateTimeInterface $publicationDate = null;
 
-    #[ORM\ManyToMany(targetEntity: VacancyEducation::class)]
-    private Collection $education;
-
     #[ORM\ManyToMany(targetEntity: VacancyCompanyIndustry::class)]
     private Collection $companyIndustry;
 
@@ -147,20 +138,8 @@ class Vacancy
     )]
     private $attachmentDocumentFile = null;
 
-    #[ORM\ManyToMany(targetEntity: VacancyKeySkills::class)]
-    private Collection $keySkills;
-
     #[ORM\ManyToMany(targetEntity: City::class)]
     private Collection $searchCities;
-
-    #[ORM\ManyToMany(targetEntity: VacancyCommunicationType::class)]
-    private Collection $communicationType;
-
-    #[ORM\ManyToMany(targetEntity: VacancyInteractionLanguages::class)]
-    private Collection $interactionLanguage;
-
-    #[ORM\ManyToMany(targetEntity: VacancyRelocation::class)]
-    private Collection $relocation;
 
     #[ORM\Column(nullable: true)]
     private ?bool $previouslyPublished = false;
@@ -181,15 +160,9 @@ class Vacancy
     public function __construct()
     {
         $this->specializations = new ArrayCollection();
-        $this->registrationMethods = new ArrayCollection();
-        $this->education = new ArrayCollection();
         $this->companyIndustry = new ArrayCollection();
         $this->employmentType = new ArrayCollection();
-        $this->keySkills = new ArrayCollection();
         $this->searchCities = new ArrayCollection();
-        $this->communicationType = new ArrayCollection();
-        $this->interactionLanguage = new ArrayCollection();
-        $this->relocation = new ArrayCollection();
         $this->vacancyResponses = new ArrayCollection();
         $this->favoritesUsers = new ArrayCollection();
         $this->workSchedule = new ArrayCollection();
@@ -273,37 +246,6 @@ class Vacancy
         return $this;
     }
 
-    /**
-     * @return Collection<int, VacancyRegistrationMethods>
-     */
-    public function getRegistrationMethods(): Collection
-    {
-        return $this->registrationMethods;
-    }
-
-    /**
-     * @param VacancyRegistrationMethods $registrationMethod
-     * @return $this
-     */
-    public function addRegistrationMethod(VacancyRegistrationMethods $registrationMethod): self
-    {
-        if (!$this->registrationMethods->contains($registrationMethod)) {
-            $this->registrationMethods->add($registrationMethod);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param VacancyRegistrationMethods $registrationMethod
-     * @return $this
-     */
-    public function removeRegistrationMethod(VacancyRegistrationMethods $registrationMethod): self
-    {
-        $this->registrationMethods->removeElement($registrationMethod);
-
-        return $this;
-    }
 
     /**
      * @return bool
@@ -375,24 +317,6 @@ class Vacancy
         return $this;
     }
 
-    /**
-     * @return VacancyIncomePaymentPeriod|null
-     */
-    public function getIncomePaymentPeriod(): ?VacancyIncomePaymentPeriod
-    {
-        return $this->incomePaymentPeriod;
-    }
-
-    /**
-     * @param VacancyIncomePaymentPeriod|null $incomePaymentPeriod
-     * @return $this
-     */
-    public function setIncomePaymentPeriod(?VacancyIncomePaymentPeriod $incomePaymentPeriod): self
-    {
-        $this->incomePaymentPeriod = $incomePaymentPeriod;
-
-        return $this;
-    }
 
     /**
      * @return string|null
@@ -605,38 +529,6 @@ class Vacancy
     }
 
     /**
-     * @return Collection<int, VacancyEducation>
-     */
-    public function getEducation(): Collection
-    {
-        return $this->education;
-    }
-
-    /**
-     * @param VacancyEducation $education
-     * @return $this
-     */
-    public function addEducation(VacancyEducation $education): self
-    {
-        if (!$this->education->contains($education)) {
-            $this->education->add($education);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param VacancyEducation $education
-     * @return $this
-     */
-    public function removeEducation(VacancyEducation $education): self
-    {
-        $this->education->removeElement($education);
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, VacancyCompanyIndustry>
      */
     public function getCompanyIndustry(): Collection
@@ -739,37 +631,6 @@ class Vacancy
         return $this->attachmentDocumentFile;
     }
 
-    /**
-     * @return Collection<int, VacancyKeySkills>
-     */
-    public function getKeySkills(): Collection
-    {
-        return $this->keySkills;
-    }
-
-    /**
-     * @param VacancyKeySkills $keySkill
-     * @return $this
-     */
-    public function addKeySkill(VacancyKeySkills $keySkill): self
-    {
-        if (!$this->keySkills->contains($keySkill)) {
-            $this->keySkills->add($keySkill);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param VacancyKeySkills $keySkill
-     * @return $this
-     */
-    public function removeKeySkill(VacancyKeySkills $keySkill): self
-    {
-        $this->keySkills->removeElement($keySkill);
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, City>
@@ -803,101 +664,6 @@ class Vacancy
         return $this;
     }
 
-    /**
-     * @return Collection<int, VacancyCommunicationType>
-     */
-    public function getCommunicationType(): Collection
-    {
-        return $this->communicationType;
-    }
-
-    /**
-     * @param VacancyCommunicationType $communicationType
-     * @return $this
-     */
-    public function addCommunicationType(VacancyCommunicationType $communicationType): self
-    {
-        if (!$this->communicationType->contains($communicationType)) {
-            $this->communicationType->add($communicationType);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param VacancyCommunicationType $communicationType
-     * @return $this
-     */
-    public function removeCommunicationType(VacancyCommunicationType $communicationType): self
-    {
-        $this->communicationType->removeElement($communicationType);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, VacancyInteractionLanguages>
-     */
-    public function getInteractionLanguage(): Collection
-    {
-        return $this->interactionLanguage;
-    }
-
-    /**
-     * @param VacancyInteractionLanguages $interactionLanguage
-     * @return $this
-     */
-    public function addInteractionLanguage(VacancyInteractionLanguages $interactionLanguage): self
-    {
-        if (!$this->interactionLanguage->contains($interactionLanguage)) {
-            $this->interactionLanguage->add($interactionLanguage);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param VacancyInteractionLanguages $interactionLanguage
-     * @return $this
-     */
-    public function removeInteractionLanguage(VacancyInteractionLanguages $interactionLanguage): self
-    {
-        $this->interactionLanguage->removeElement($interactionLanguage);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, VacancyRelocation>
-     */
-    public function getRelocation(): Collection
-    {
-        return $this->relocation;
-    }
-
-    /**
-     * @param VacancyRelocation $relocation
-     * @return $this
-     */
-    public function addRelocation(VacancyRelocation $relocation): self
-    {
-        if (!$this->relocation->contains($relocation)) {
-            $this->relocation->add($relocation);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param VacancyRelocation $relocation
-     * @return $this
-     */
-    public function removeRelocation(VacancyRelocation $relocation): self
-    {
-        $this->relocation->removeElement($relocation);
-
-        return $this;
-    }
 
     /**
      * @return bool|null

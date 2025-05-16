@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Ожидание",
+    "techName": "pending"
+  },
+  {
+    "name": "Приглашение",
+    "techName": "invitation"
+  },
+  {
+    "name": "Отказ",
+    "techName": "rejection"
+  }
+]

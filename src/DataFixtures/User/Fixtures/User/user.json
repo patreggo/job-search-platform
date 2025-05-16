@@ -1,0 +1,22 @@
+[
+  {
+    "password": "111111",
+    "email": "user1@user.ru",
+    "role_name": "ROLE_USER"
+  },
+  {
+    "password": "111111",
+    "email": "user2@user.ru",
+    "role_name": "ROLE_USER"
+  },
+  {
+    "password": "111111",
+    "email": "user3@user.ru",
+    "role_name": "ROLE_USER"
+  },
+  {
+    "password": "111111",
+    "email": "author@user.ru",
+    "role_name": "ROLE_USER_AUTHOR"
+  }
+]

@@ -1,6 +1,6 @@
 <?php
 
-namespace Api\Controller\Resume;
+namespace Api\Resume;
 
 
 use Doctrine\Persistence\ManagerRegistry;

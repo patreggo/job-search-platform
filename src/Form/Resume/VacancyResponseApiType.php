@@ -5,7 +5,7 @@ namespace App\Form\Resume;
 use App\Entity\Resume\Resume;
 use App\Entity\Resume\VacancyResponse;
 use App\Entity\Vacancy\Vacancy;
-use Common\Form\AppAbstractType;
+use App\Form\AppAbstractType;
 use Exception;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -49,6 +49,7 @@ class VacancyResponseApiType extends AppAbstractType
     {
         $resolver->setDefaults([
             'data_class' => VacancyResponse::class,
+            'csrf_protection' => false,
         ]);
     }
 }

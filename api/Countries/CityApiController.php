@@ -25,7 +25,7 @@ class CityApiController extends AbstractFOSRestController
     }
 
     #[Rest\Get('/{id}', name: 'get_single_city', methods: ['GET'])]
-    public function getSingleResume(
+    public function getSingleCity(
         City $city,
         CityRepository $cityRepository,
     ): Response

@@ -4,10 +4,11 @@ namespace App\Form\Resume;
 
 use App\Entity\Resume\WorkPlace;
 use App\Entity\Vacancy\VacancyWorkExperience;
-use Common\Form\AppAbstractType;
+use App\Form\AppAbstractType;
 use Exception;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -33,14 +34,14 @@ class WorkPlaceApiType extends AppAbstractType
             )
             ->add(
                 'startDate',
-                DateTimeType::class,
+                DateType::class,
                 [
                     'label' => 'start_date',
                 ]
             )
             ->add(
                 'endDate',
-                DateTimeType::class,
+                DateType::class,
                 [
                     'label' => 'end_date',
                 ]
@@ -77,6 +78,7 @@ class WorkPlaceApiType extends AppAbstractType
         $resolver->setDefaults(
             [
                 'data_class' => WorkPlace::class,
+                'csrf_protection' => false,
             ]
         );
     }

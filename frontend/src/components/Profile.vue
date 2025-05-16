@@ -9,8 +9,20 @@
       <p><strong>Телефон:</strong> {{ user.phone }}</p>
 
       <!-- Кнопка перехода на форму создания вакансии -->
-      <router-link to="/new" class="mt-4 w-full inline-block text-center bg-green-600 text-black py-2 px-4 rounded hover:bg-green-700">
+      <router-link to="/vacancy/new" class="mt-4 w-full inline-block text-center bg-green-600 text-black py-2 px-4 rounded hover:bg-green-700">
         Создать вакансию
+      </router-link>
+
+      <router-link to="/resume/new" class="mt-4 w-full inline-block text-center bg-green-600 text-black py-2 px-4 rounded hover:bg-green-700">
+        Создать резюме
+      </router-link>
+
+      <router-link to="/resume/user/personal" class="mt-4 w-full inline-block text-center bg-gray-600 text-black py-2 px-4 rounded hover:bg-blue-700">
+        Посмотреть резюме
+      </router-link>
+
+      <router-link to="/vacancy_response/user/personal" class="mt-4 w-full inline-block text-center bg-gray-600 text-black py-2 px-4 rounded hover:bg-blue-700">
+        Посмотреть отклики
       </router-link>
 
       <button @click="logout" class="mt-2 w-full bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700">

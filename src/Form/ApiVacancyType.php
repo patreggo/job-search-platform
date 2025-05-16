@@ -151,35 +151,6 @@ class ApiVacancyType extends AppAbstractType
                 ]
             )
             ->add(
-                'communicationType',
-                EntityType::class,
-                [
-                    'label' => 'communication_type',
-                    'class' => VacancyCommunicationType::class,
-                    'multiple' => true,
-                    'choice_label' => 'name.translatorKey'
-                ]
-            )
-            ->add(
-                'interactionLanguage',
-                EntityType::class,
-                [
-                    'label' => 'native_interaction_language',
-                    'class' => VacancyInteractionLanguages::class,
-                    'multiple' => true,
-                    'choice_label' => 'name.translatorKey'
-                ]
-            )
-            ->add(
-                'relocation',
-                EntityType::class,
-                [
-                    'label' => 'relocation',
-                    'class' => VacancyRelocation::class,
-                    'multiple' => true,
-                    'choice_label' => 'name.translatorKey'
-                ]
-            )->add(
                 'specializations',
                 EntityType::class,
                 [
@@ -207,16 +178,6 @@ class ApiVacancyType extends AppAbstractType
                     'class' => VacancyWorkExperience::class,
                     'choice_label' => 'name.translatorKey'
 
-                ]
-            )
-            ->add(
-                'keySkills',
-                EntityType::class,
-                [
-                    'label' => 'key_skills',
-                    'class' => VacancyKeySkills::class,
-                    'multiple' => true,
-                    'choice_label' => 'name.translatorKey'
                 ]
             )
             ->add(
