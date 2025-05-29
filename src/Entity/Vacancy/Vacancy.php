@@ -5,11 +5,13 @@ namespace App\Entity\Vacancy;
 use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
+use App\Attribute\Filterable;
 use App\Entity\City;
 use App\Entity\Company;
 use App\Entity\Country;
 use App\Entity\Resume\VacancyResponse;
 use App\Entity\User;
+use App\Enum\FilterType;
 use App\Repository\Vacancy\VacancyRepository;
 use App\Traits\IsActive;
 use App\Traits\IsEnabledTrait;
@@ -31,7 +33,6 @@ use Symfony\Component\Validator\Constraints as Assert;
     normalizationContext: ['groups' => ['read']]
 )]
 #[ORM\HasLifecycleCallbacks]
-#[ApiFilter(filterClass: BooleanFilter::class, properties: ['isModerated'])]
 class Vacancy
 {
     use IsActive;
@@ -49,6 +50,7 @@ class Vacancy
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['read'])]
     #[Assert\NotNull]
+    #[Filterable('name', FilterType::LIKE->value)]
     private ?string $name = null;
 
     #[ORM\ManyToMany(targetEntity: VacancySpecializations::class)]
@@ -57,6 +59,7 @@ class Vacancy
         max: 1,
         maxMessage: 'select_maximum_one_value'
     )]
+    #[Filterable('specializations', FilterType::EXACT->value, 's.id', 'specializations.s')]
     private Collection $specializations;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]

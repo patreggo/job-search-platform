@@ -5,6 +5,7 @@ namespace Api;
 use App\Entity\Vacancy\Vacancy;
 use App\Form\ApiVacancyType;
 use App\Repository\Vacancy\VacancyRepository;
+use App\Service\FilterService;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -15,13 +16,27 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/api', name: 'api_')]
 class VacancyApiController extends AbstractFOSRestController
 {
+    public function __construct(
+        private FilterService $filterService
+    ) {}
+
     #[Rest\Get('/many_vacancies', name: 'get_many_vacancies')]
     public function getManyVacancies(
+        Request $request,
         VacancyRepository $vacancyRepository,
     ): Response
     {
-        $vacancies = $vacancyRepository->findAll();
-        return $this->handleView($this->view($vacancies, Response::HTTP_OK));
+        $filters = $this->filterService->parseFilters($request);
+        $vacancies = $vacancyRepository->findByFilters($filters);
+        $total = $vacancyRepository->countByFilters($filters);
+
+        return $this->handleView($this->view([
+            'data' => $vacancies,
+            'total' => $total,
+            'page' => (int)($filters['page'] ?? 1),
+            'limit' => (int)($filters['limit'] ?? 20),
+            'filters_applied' => array_keys($filters)
+        ], Response::HTTP_OK));
     }
 
     #[Rest\Post('/new_vacancy', name: 'create_new_vacancy')]
