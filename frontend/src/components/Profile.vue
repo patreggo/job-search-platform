@@ -1,26 +1,28 @@
-<!-- Profile.vue -->
 <template>
   <div class="max-w-md mx-auto mt-10 p-6 bg-white rounded shadow">
     <h2 class="text-xl font-bold mb-4 text-black">Профиль</h2>
     <div v-if="user" class="space-y-3 text-black">
       <p><strong>Имя:</strong> {{ user.first_name }}</p>
-      <p><strong>Фамилия:</strong> {{ user._last_name }}</p>
+      <p><strong>Фамилия:</strong> {{ user.last_name }}</p>
       <p><strong>Email:</strong> {{ user.email }}</p>
       <p><strong>Телефон:</strong> {{ user.phone }}</p>
+      <p><strong>Роль:</strong> {{ user.role = 1 ? 'Соискатель' : 'Работодатель' }}</p>
 
-      <!-- Кнопка перехода на форму создания вакансии -->
-      <router-link to="/vacancy/new" class="mt-4 w-full inline-block text-center bg-green-600 text-black py-2 px-4 rounded hover:bg-green-700">
-        Создать вакансию
-      </router-link>
-
-      <router-link to="/resume/new" class="mt-4 w-full inline-block text-center bg-green-600 text-black py-2 px-4 rounded hover:bg-green-700">
-        Создать резюме
-      </router-link>
+      <!-- Кнопки для создания контента -->
+      <div v-if="user.role === 'asdasd' ">
+        <router-link to="/vacancy/new" class="mt-4 w-full inline-block text-center bg-green-600 text-black py-2 px-4 rounded hover:bg-green-700">
+          Создать вакансию
+        </router-link>
+      </div>
+      <div v-if="user.role = 1">
+        <router-link to="/resume/new" class="mt-4 w-full inline-block text-center bg-green-600 text-black py-2 px-4 rounded hover:bg-green-700">
+          Создать резюме
+        </router-link>
+      </div>
 
       <router-link to="/resume/user/personal" class="mt-4 w-full inline-block text-center bg-gray-600 text-black py-2 px-4 rounded hover:bg-blue-700">
         Посмотреть резюме
       </router-link>
-
       <router-link to="/vacancy_response/user/personal" class="mt-4 w-full inline-block text-center bg-gray-600 text-black py-2 px-4 rounded hover:bg-blue-700">
         Посмотреть отклики
       </router-link>
@@ -48,7 +50,6 @@ onMounted(async () => {
     user.value = data
     localStorage.setItem('user', JSON.stringify(data))
   } catch (e) {
-    // Если нет токена или он невалиден — редиректим на login
     console.error('Ошибка получения данных:', e)
     localStorage.removeItem('token')
     localStorage.removeItem('user')

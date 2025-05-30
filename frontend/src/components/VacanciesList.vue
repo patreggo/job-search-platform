@@ -1,5 +1,21 @@
 <template>
   <div class="container mx-auto p-4">
+    <!-- Поиск -->
+    <div class="flex flex-col md:flex-row gap-4 mb-6">
+      <input v-model="searchQuery" type="text" placeholder="Поиск по названию или компании"
+             class="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+
+      <button @click="search" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        Найти
+      </button>
+    </div>
+
+    <!-- Фильтры -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <FilterSelect param-type="education" label="Образование" @update="filters.education = $event" />
+      <FilterSelect param-type="specializations" label="Специализации" @update="filters.specialization = $event" />
+      <FilterSelect param-type="employment_type" label="Тип занятости" @update="filters.employmentType = $event" />
+    </div>
     <h1 class="text-3xl font-bold text-black mb-6">Все вакансии</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <router-link
@@ -105,6 +121,7 @@
  import { ref, onMounted } from 'vue'
  import { useRoute, useRouter } from 'vue-router'
  import api from '../api.js'
+ import FilterSelect from "./FilterSelect.vue";
 
  const setDefaultLogo = (event) => {
    event.target.src = '/default-logo.png'
@@ -197,6 +214,28 @@
      console.error(e.response?.data || e)
    }
  }
+
+ const searchQuery = ref('')
+ const filters = ref({
+   education: null,
+   specialization: null,
+   employmentType: null
+ })
+
+
+ const search = async () => {
+   const params = {
+     query: searchQuery.value,
+     income_min: filters.value.salary,
+     city_id: filters.value.region,
+     employment_type_id: filters.value.employmentType
+   }
+
+   const response = await api.get('/many_vacancies', { params })
+   vacancies.value = response.data
+ }
+
+ onMounted(search)
  </script>
 
 <style scoped>

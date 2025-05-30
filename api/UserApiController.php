@@ -31,7 +31,6 @@ class UserApiController extends AbstractFOSRestController
     ): Response
     {
         $user = new User();
-        $user->setRoles($userRolesRepository->getRoleByName(UserRoles::ROLE_USER));
 
         $form = $this->createForm(ApiRegistrationFormType::class, $user);
         $data = json_decode($request->getContent(), true);
@@ -53,6 +52,14 @@ class UserApiController extends AbstractFOSRestController
     {
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
         return $this->handleView($this->view($user, Response::HTTP_OK));
+    }
+
+    #[Rest\Get('/user_roles', name: 'api_auth_user', methods: ['GET'])]
+    public function getUserRoles(UserRolesRepository $repository
+    ): Response
+    {
+        $data = $repository->findAll();
+        return $this->handleView($this->view($data, Response::HTTP_OK));
     }
 
 }

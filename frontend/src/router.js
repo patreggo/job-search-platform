@@ -23,7 +23,7 @@ const routes = [
     {
         path: '/vacancy/new',
         component: VacancyForm,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: true, requiresRole: 'employer' } // Только для работодателей
     },
     {
         path: '/vacancy/:id',
@@ -33,22 +33,22 @@ const routes = [
     {
         path: '/profile',
         component: Profile,
-        meta: {requiresAuth: true}
+        meta: { requiresAuth: true }
     },
     {
         path: '/vacancies',
         component: VacanciesList,
-        meta: {requiresAuth: true}
+        meta: { requiresAuth: true }
     },
     {
         path: '/resume/new',
         component: ResumeForm,
-        meta: {requiresAuth: true}
+        meta: { requiresAuth: true, requiresRole: 'USER_ROLE' } // Только для соискателей
     },
     {
         path: '/resume/:id',
         component: SingleResume,
-        meta: {requiresAuth: true}
+        meta: { requiresAuth: true }
     },
     {
         path: '/vacancy_response/new',
@@ -69,9 +69,17 @@ const router = createRouter({
     routes,
 })
 
+// Middleware для проверки роли
 router.beforeEach(async (to, from, next) => {
     if (to.meta.requiresAuth && !await isAuthenticated()) {
         next('/login')
+    } else if (to.meta.requiresRole) {
+        const user = JSON.parse(localStorage.getItem('user'))
+        if (!user || user.role.name !== to.meta.requiresRole) {
+            next({ name: 'Unauthorized' }) // Перенаправить на страницу ошибки
+        } else {
+            next()
+        }
     } else {
         next()
     }

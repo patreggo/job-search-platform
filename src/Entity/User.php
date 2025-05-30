@@ -58,8 +58,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $email = null;
 
     #[ORM\ManyToOne(targetEntity: UserRoles::class, inversedBy: 'user')]
-    #[ORM\JoinColumn(name: 'role_id', nullable: false)]
-    private $roles;
+    private ?UserRoles $roles;
 
     /**
      * @var string|null The hashed password

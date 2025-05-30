@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\User;
+use App\Entity\UserRoles;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -43,6 +45,14 @@ class ApiRegistrationFormType extends AbstractType
             )
             ->add(
                 'phone', TextType::class,
+            )
+            ->add(
+                'roles',
+                EntityType::class,
+                [
+                    'label' => 'role',
+                    "class" => UserRoles::class,
+                ]
             );
     }
 
