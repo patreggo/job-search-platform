@@ -29,7 +29,7 @@ class VacancyResponseStatusFixtures extends AbstractFixtures
     {
         foreach ($this->getFixturesData(__DIR__, 'vacancy_response_status.json') as $vacancyResponseStatus) {
             $vacancyResponseStatusEntity = new VacancyResponseStatus();
-            $vacancyResponseStatusEntity->setName($vacancyResponseStatus['name_translator_key']);
+            $vacancyResponseStatusEntity->setName($vacancyResponseStatus['name']);
             $vacancyResponseStatusEntity->setTechName($vacancyResponseStatus['techName']);
 
             $manager->persist($vacancyResponseStatusEntity);

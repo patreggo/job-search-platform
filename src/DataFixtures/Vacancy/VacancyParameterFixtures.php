@@ -4,16 +4,10 @@ namespace App\DataFixtures\Vacancy;
 
 use App\DataFixtures\AbstractFixtures;
 use App\Entity\Vacancy\AbstractVacancyParameters;
-use App\Entity\Vacancy\VacancyCommunicationType;
 use App\Entity\Vacancy\VacancyCompanyIndustry;
 use App\Entity\Vacancy\VacancyEducation;
 use App\Entity\Vacancy\VacancyEmploymentType;
 use App\Entity\Vacancy\VacancyIncomePayment;
-use App\Entity\Vacancy\VacancyIncomePaymentPeriod;
-use App\Entity\Vacancy\VacancyInteractionLanguages;
-use App\Entity\Vacancy\VacancyKeySkills;
-use App\Entity\Vacancy\VacancyRegistrationMethods;
-use App\Entity\Vacancy\VacancyRelocation;
 use App\Entity\Vacancy\VacancySpecializations;
 use App\Entity\Vacancy\VacancyWorkExperience;
 use App\Entity\Vacancy\VacancyWorkSchedule;
@@ -49,22 +43,6 @@ class VacancyParameterFixtures extends AbstractFixtures
         $vacancyParameterEntity->setPosition($position);
     }
 
-    /**
-     * @param ObjectManager $manager
-     * @return void
-     * @throws JsonException
-     */
-    protected function loadDataCommunicationType(ObjectManager $manager): void
-    {
-        $i = 1;
-        foreach ($this->getFixturesData(__DIR__, 'communication_type.json') as $vacancyParameter) {
-            $vacancyParameterEntity = new VacancyCommunicationType();
-            $this->setData($vacancyParameterEntity, $vacancyParameter, $i);
-            $manager->persist($vacancyParameterEntity);
-            $i++;
-        }
-        $manager->flush();
-    }
 
     /**
      * @param ObjectManager $manager
@@ -134,74 +112,8 @@ class VacancyParameterFixtures extends AbstractFixtures
         }
         $manager->flush();
     }
-    /**
-     * @param ObjectManager $manager
-     * @return void
-     * @throws JsonException
-     */
-    protected function loadDataIncomePaymentPeriod(ObjectManager $manager): void
-    {
-        $i = 1;
-        foreach ($this->getFixturesData(__DIR__, 'income_payment_period.json') as $vacancyParameter) {
-            $vacancyParameterEntity = new VacancyIncomePaymentPeriod();
-            $this->setData($vacancyParameterEntity, $vacancyParameter, $i);
 
-            $manager->persist($vacancyParameterEntity);
-            $i++;
-        }
-        $manager->flush();
-    }
-    /**
-     * @param ObjectManager $manager
-     * @return void
-     * @throws JsonException
-     */
-    protected function loadDataInteractionLanguages(ObjectManager $manager): void
-    {
-        $i = 1;
-        foreach ($this->getFixturesData(__DIR__, 'interaction_languages.json') as $vacancyParameter) {
-            $vacancyParameterEntity = new VacancyInteractionLanguages();
-            $this->setData($vacancyParameterEntity, $vacancyParameter, $i);
 
-            $manager->persist($vacancyParameterEntity);
-            $i++;
-        }
-        $manager->flush();
-    }
-    /**
-     * @param ObjectManager $manager
-     * @return void
-     * @throws JsonException
-     */
-    protected function loadDataKeySkills(ObjectManager $manager): void
-    {
-        $i = 1;
-        foreach ($this->getFixturesData(__DIR__, 'key_skills.json') as $vacancyParameter) {
-            $vacancyParameterEntity = new VacancyKeySkills();
-            $this->setData($vacancyParameterEntity, $vacancyParameter, $i);
-
-            $manager->persist($vacancyParameterEntity);
-            $i++;
-        }
-        $manager->flush();
-    }
-    /**
-     * @param ObjectManager $manager
-     * @return void
-     * @throws JsonException
-     */
-    protected function loadDataRelocation(ObjectManager $manager): void
-    {
-        $i = 1;
-        foreach ($this->getFixturesData(__DIR__, 'relocation.json') as $vacancyParameter) {
-            $vacancyParameterEntity = new VacancyRelocation();
-            $this->setData($vacancyParameterEntity, $vacancyParameter, $i);
-
-            $manager->persist($vacancyParameterEntity);
-            $i++;
-        }
-        $manager->flush();
-    }
     /**
      * @param ObjectManager $manager
      * @return void
@@ -219,23 +131,7 @@ class VacancyParameterFixtures extends AbstractFixtures
         }
         $manager->flush();
     }
-    /**
-     * @param ObjectManager $manager
-     * @return void
-     * @throws JsonException
-     */
-    protected function loadDataRegistrationMethods(ObjectManager $manager): void
-    {
-        $i = 1;
-        foreach ($this->getFixturesData(__DIR__, 'registration_methods.json') as $vacancyParameter) {
-            $vacancyParameterEntity = new VacancyRegistrationMethods();
-            $this->setData($vacancyParameterEntity, $vacancyParameter, $i);
 
-            $manager->persist($vacancyParameterEntity);
-            $i++;
-        }
-        $manager->flush();
-    }
     /**
      * @param ObjectManager $manager
      * @return void
