@@ -3,7 +3,8 @@
 namespace App\Repository\Vacancy;
 
 use App\Entity\Vacancy\VacancySpecializations;
-use Common\Repository\AbstractRepository;
+use App\Repository\BaseFilterableRepository;
+use App\Service\FilterService;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -15,12 +16,18 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method VacancySpecializations[]    findAll()
  * @method VacancySpecializations[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class VacancySpecializationsRepository extends ServiceEntityRepository
+class VacancySpecializationsRepository extends BaseFilterableRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, FilterService $filterService)
     {
-        parent::__construct($registry, VacancySpecializations::class);
+        parent::__construct($registry, VacancySpecializations::class, $filterService );
     }
+
+    protected function getAlias(): string
+    {
+        return 's';
+    }
+
 
     public function save(VacancySpecializations $entity, bool $flush = false): void
     {

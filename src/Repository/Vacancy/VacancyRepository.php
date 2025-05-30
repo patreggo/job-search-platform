@@ -6,7 +6,8 @@ use App\Entity\Company;
 use App\Entity\Resume\Resume;
 use App\Entity\User;
 use App\Entity\Vacancy\Vacancy;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Repository\BaseFilterableRepository;
+use App\Service\FilterService;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
@@ -17,14 +18,19 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Vacancy[]    findAll()
  * @method Vacancy[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class VacancyRepository extends ServiceEntityRepository
+class VacancyRepository extends BaseFilterableRepository
 {
     /**
      * @param ManagerRegistry $registry
      */
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, FilterService $filterService,)
     {
-        parent::__construct($registry, Vacancy::class);
+        parent::__construct($registry, Vacancy::class, $filterService );
+    }
+
+    protected function getAlias(): string
+    {
+        return 'v';
     }
 
     /**
