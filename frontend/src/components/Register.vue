@@ -5,8 +5,8 @@
     <!-- Выбор роли -->
     <div class="mb-4">
       <label for="role" class="block text-sm font-medium text-gray-700 mb-1">Выберите роль:</label>
-      <select v-model="form.roles" id="role" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
-        <option v-for="role in roles" :key="role.id" :value="role.id">
+      <select v-model="form.roles" id="role" class="text-black w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+        <option class="text-black" v-for="role in roles" :key="role.id" :value="role.id">
           {{ role.display_name }}
         </option>
       </select>
@@ -16,35 +16,35 @@
     <div class="mb-4">
       <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
       <input v-model="form.email" id="email" type="email" placeholder="Email"
-             class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
+             class="text-black w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
     </div>
 
     <!-- Пароль -->
     <div class="mb-4">
       <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Пароль</label>
       <input v-model="form.password" id="password" type="password" placeholder="Пароль"
-             class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
+             class="text-black w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
     </div>
 
     <!-- Имя -->
     <div class="mb-4">
       <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">Имя</label>
       <input v-model="form.firstName" id="firstName" type="text" placeholder="Имя"
-             class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
+             class="text-black w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
     </div>
 
     <!-- Фамилия -->
     <div class="mb-4">
       <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Фамилия</label>
       <input v-model="form.lastName" id="lastName" type="text" placeholder="Фамилия"
-             class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
+             class="text-black w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
     </div>
 
     <!-- Телефон -->
     <div class="mb-4">
       <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Телефон</label>
       <input v-model="form.phone" id="phone" type="tel" placeholder="Телефон"
-             class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
+             class="text-black w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
     </div>
 
     <!-- Кнопка регистрации -->
