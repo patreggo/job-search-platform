@@ -14,7 +14,7 @@
               v-model="searchQuery"
               type="text"
               placeholder="Введите название вакансии..."
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+              class="text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
               @input="debouncedSearch"
           >
         </div>
@@ -29,14 +29,14 @@
                 v-model="filters.salaryFrom"
                 type="number"
                 placeholder="От"
-                class="w-1/2 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                class="text-black w-1/2 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
                 @change="applyFilters"
             >
             <input
                 v-model="filters.salaryTo"
                 type="number"
                 placeholder="До"
-                class="w-1/2 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                class="text-black w-1/2 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
                 @change="applyFilters"
             >
           </div>
@@ -148,7 +148,7 @@
             <label class="text-sm text-gray-700">Сортировать по:</label>
             <select
                 v-model="sortBy"
-                class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                class="text-black px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
                 @change="applyFilters"
             >
               <option value="created_at">Дате создания</option>
@@ -158,7 +158,7 @@
             </select>
             <select
                 v-model="sortOrder"
-                class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                class="text-black px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
                 @change="applyFilters"
             >
               <option value="desc">По убыванию</option>
@@ -443,7 +443,7 @@ const applyFilters = async () => {
           : undefined,
 
       // Типы занятости (массив)
-      employment_types: filters.value.selectedEmploymentTypes.length > 0
+      employmentType: filters.value.selectedEmploymentTypes.length > 0
           ? filters.value.selectedEmploymentTypes.join(',')
           : undefined,
 

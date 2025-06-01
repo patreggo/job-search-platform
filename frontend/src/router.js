@@ -43,7 +43,7 @@ const routes = [
     {
         path: '/resume/new',
         component: ResumeForm,
-        meta: { requiresAuth: true, requiresRole: 'USER_ROLE' } // Только для соискателей
+        meta: { requiresAuth: true } // Только для соискателей
     },
     {
         path: '/resume/:id',

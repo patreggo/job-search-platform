@@ -3,7 +3,8 @@
 namespace App\Repository\Vacancy;
 
 use App\Entity\Vacancy\VacancyEmploymentType;
-use Common\Repository\AbstractRepository;
+use App\Repository\BaseFilterableRepository;
+use App\Service\FilterService;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -15,11 +16,16 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method VacancyEmploymentType[]    findAll()
  * @method VacancyEmploymentType[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class VacancyEmploymentTypeRepository extends ServiceEntityRepository
+class VacancyEmploymentTypeRepository extends BaseFilterableRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, FilterService $filterService)
     {
-        parent::__construct($registry, VacancyEmploymentType::class);
+        parent::__construct($registry, VacancyEmploymentType::class, $filterService );
+    }
+
+    protected function getAlias(): string
+    {
+        return 'et';
     }
 
     public function save(VacancyEmploymentType $entity, bool $flush = false): void

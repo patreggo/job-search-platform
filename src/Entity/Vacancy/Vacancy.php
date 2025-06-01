@@ -129,6 +129,7 @@ class Vacancy
     private Collection $companyIndustry;
 
     #[ORM\ManyToMany(targetEntity: VacancyEmploymentType::class)]
+    #[Filterable('employmentType', FilterType::EXACT->value, 'et.id', 'employmentType.et')]
     private Collection $employmentType;
 
     #[ORM\Column(length: 255, nullable: true)]
