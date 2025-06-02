@@ -6,14 +6,10 @@ use App\Entity\City;
 use App\Entity\Company;
 use App\Entity\Country;
 use App\Entity\Vacancy\Vacancy;
-use App\Entity\Vacancy\VacancyCommunicationType;
 use App\Entity\Vacancy\VacancyCompanyIndustry;
 use App\Entity\Vacancy\VacancyEducation;
 use App\Entity\Vacancy\VacancyEmploymentType;
 use App\Entity\Vacancy\VacancyIncomePayment;
-use App\Entity\Vacancy\VacancyInteractionLanguages;
-use App\Entity\Vacancy\VacancyKeySkills;
-use App\Entity\Vacancy\VacancyRelocation;
 use App\Entity\Vacancy\VacancySpecializations;
 use App\Entity\Vacancy\VacancyWorkExperience;
 use App\Entity\Vacancy\VacancyWorkSchedule;
@@ -126,16 +122,6 @@ class ApiVacancyType extends AppAbstractType
                 [
                     'label' => 'work_schedule',
                     'class' => VacancyWorkSchedule::class,
-                    'multiple' => true,
-                    'choice_label' => 'name.translatorKey'
-                ]
-            )
-            ->add(
-                'education',
-                EntityType::class,
-                [
-                    'label' => 'education',
-                    'class' => VacancyEducation::class,
                     'multiple' => true,
                     'choice_label' => 'name.translatorKey'
                 ]

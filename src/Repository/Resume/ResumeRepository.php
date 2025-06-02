@@ -5,6 +5,8 @@ namespace App\Repository\Resume;
 use App\Entity\Resume\Resume;
 use App\Entity\User;
 use App\Entity\Vacancy\Vacancy;
+use App\Repository\BaseFilterableRepository;
+use App\Service\FilterService;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Query\Parameter;
@@ -20,14 +22,19 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Resume[]    findAll()
  * @method Resume[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ResumeRepository extends ServiceEntityRepository
+class ResumeRepository extends BaseFilterableRepository
 {
     /**
      * @param ManagerRegistry $registry
      */
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, FilterService $filterService)
     {
-        parent::__construct($registry, Resume::class);
+        parent::__construct($registry, Resume::class, $filterService);
+    }
+
+    protected function getAlias(): string
+    {
+        return 'r';
     }
 
     /**

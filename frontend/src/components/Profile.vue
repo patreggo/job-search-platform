@@ -133,6 +133,7 @@
               <h3 class="text-xl font-semibold text-gray-900 ml-3">Вакансии</h3>
             </div>
 
+
             <p class="text-gray-600 mb-4">Создавайте и управляйте вакансиями для поиска сотрудников</p>
 
             <div class="space-y-3">
@@ -150,6 +151,38 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                 </svg>
                 Мои вакансии
+              </router-link>
+            </div>
+          </div>
+
+          <!-- Компании -->
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <div class="flex items-center mb-4">
+              <div class="bg-teal-100 p-3 rounded-lg">
+                <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2m-6 0H7m2-8h6m-6 4h6"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 ml-3">Компании</h3>
+            </div>
+
+            <p class="text-gray-600 mb-4">Создавайте и управляйте своими компаниями</p>
+
+            <div class="space-y-3">
+              <router-link to="/company/new"
+                           class="w-full flex items-center justify-center px-4 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                Создать компанию
+              </router-link>
+
+              <router-link to="/company/user/personal"
+                           class="w-full flex items-center justify-center px-4 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors font-medium">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                </svg>
+                Мои компании
               </router-link>
             </div>
           </div>

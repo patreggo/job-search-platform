@@ -5,6 +5,7 @@ namespace Api\Resume;
 use App\Entity\Resume\Resume;
 use App\Form\Resume\ResumeApiType;
 use App\Repository\Resume\ResumeRepository;
+use App\Service\FilterService;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -17,13 +18,27 @@ use Symfony\Component\Routing\Annotation\Route;
 class ResumeApiController extends AbstractFOSRestController
 {
 
+    public function __construct(
+        private FilterService $filterService
+    ) {}
+
     #[Rest\Get('/list', name: 'list', methods: ['GET'])]
     public function getManyResumes(
         ResumeRepository $resumeRepository,
+        Request $request,
     ): Response
     {
-        $resumes = $resumeRepository->findAll();
-        return $this->handleView($this->view($resumes, Response::HTTP_OK));
+        $filters = $this->filterService->parseFilters($request);
+        $resumes = $resumeRepository->findByFilters($filters);
+        $total = $resumeRepository->countByFilters($filters);
+
+        return $this->handleView($this->view([
+            'data' => $resumes,
+            'total' => $total,
+            'page' => (int)($filters['page'] ?? 1),
+            'limit' => (int)($filters['limit'] ?? 20),
+            'filters_applied' => array_keys($filters)
+        ], Response::HTTP_OK));
     }
 
 

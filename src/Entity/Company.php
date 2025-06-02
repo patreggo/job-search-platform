@@ -6,6 +6,7 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Entity\Vacancy\Vacancy;
 use App\Repository\CompanyRepository;
 use App\Traits\IsEnabledTrait;
+use App\Traits\SlugTrait;
 use App\Traits\TimestampTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -62,10 +63,12 @@ class Company
     private $logoFile = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotNull]
     private ?string $contactPhone = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['read'])]
+    #[Assert\NotNull]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -73,6 +76,7 @@ class Company
     private ?bool $isConfirmed = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotNull]
     private ?string $description = null;
 
     #[ORM\OneToMany(mappedBy: 'company', targetEntity: Vacancy::class)]

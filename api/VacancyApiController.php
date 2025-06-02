@@ -66,4 +66,13 @@ class VacancyApiController extends AbstractFOSRestController
         $data = $vacancyRepository->find(['id' => $vacancy->getId()]);
         return $this->handleView($this->view($data, Response::HTTP_OK));
     }
+
+    #[Rest\Get('/user/personal', name: 'personal')]
+    public function userResume(
+        VacancyRepository $vacancyRepository,
+    ): Response
+    {
+        $data = $vacancyRepository->findBy(['user' => $this->getUser()->getId()]);
+        return $this->handleView($this->view($data, Response::HTTP_OK));
+    }
 }

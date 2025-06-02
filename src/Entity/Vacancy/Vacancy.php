@@ -2,8 +2,6 @@
 
 namespace App\Entity\Vacancy;
 
-use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
-use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use App\Attribute\Filterable;
 use App\Entity\City;
@@ -18,7 +16,6 @@ use App\Traits\IsEnabledTrait;
 use App\Traits\IsModeratedTrait;
 use App\Traits\SlugTrait;
 use App\Traits\TimestampTrait;
-
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;

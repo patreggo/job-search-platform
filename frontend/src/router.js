@@ -11,19 +11,23 @@ import SingleResume from "./components/SingleResume.vue";
 import VacancyResponseForm from "./components/VacancyResponseForm.vue";
 import ResumeList from "./components/ResumeList.vue";
 import VacancyResponeList from "./components/VacancyResponeList.vue";
+import RoleBasedHome from "./components/RoleBasedHome.vue";
+import PersonalResumes from "./components/PersonalResumes.vue";
+import CompanyList from './components/CompanyList.vue'
+import CompanyForm from './components/CompanyForm.vue'
 
 const routes = [
     { path: '/login', component: Login },
     { path: '/register', component: Register },
     {
         path: '/',
-        component: VacanciesList,
+        component: RoleBasedHome,
         meta: { requiresAuth: true }
     },
     {
         path: '/vacancy/new',
         component: VacancyForm,
-        meta: { requiresAuth: true, requiresRole: 'employer' } // Только для работодателей
+        meta: { requiresAuth: true } // Только для работодателей
     },
     {
         path: '/vacancy/:id',
@@ -56,11 +60,26 @@ const routes = [
     },
     {
         path: '/resume/user/personal',
-        component: ResumeList
+        component: PersonalResumes
     },
     {
         path: '/vacancy_response/user/personal',
         component: VacancyResponeList
+    },
+    {
+        path: '/company/user/personal',
+        component: CompanyList,
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/company/new',
+        component: CompanyForm,
+        meta: { requiresAuth: true}
+    },
+    {
+        path: '/company/edit/:id',
+        component: CompanyForm,
+        meta: { requiresAuth: true}
     }
 ]
 
