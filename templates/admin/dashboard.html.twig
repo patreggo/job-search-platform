@@ -1,0 +1,113 @@
+{# templates/admin/dashboard.html.twig #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content_title %}Админ панель - Модерация{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-info">
+                <h4><i class="fas fa-tachometer-alt"></i> Добро пожаловать в админ панель!</h4>
+                <p>Используйте меню слева для модерации вакансий, резюме и компаний.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h4>Вакансии</h4>
+                            <p class="mb-0">Проверить вакансии на модерации</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-briefcase fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ ea_url().setController('App\\Controller\\Admin\\VacancyCrudController').setAction('index').set('filters[isModerated]', '0') }}"
+                       class="text-white text-decoration-none">
+                        Перейти к модерации <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h4>Резюме</h4>
+                            <p class="mb-0">Проверить резюме на модерации</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-file-text fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ ea_url().setController('App\\Controller\\Admin\\ResumeCrudController').setAction('index').set('filters[isModerated]', '0') }}"
+                       class="text-white text-decoration-none">
+                        Перейти к модерации <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h4>Компании</h4>
+                            <p class="mb-0">Подтвердить компании</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-building fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ ea_url().setController('App\\Controller\\Admin\\CompanyCrudController').setAction('index').set('filters[isConfirmed]', '0') }}"
+                       class="text-white text-decoration-none">
+                        Перейти к модерации <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Инструкции</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success"></i>
+                            <strong>Одобрить:</strong> Нажмите зеленую кнопку "Одобрить" для подтверждения контента
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-times text-danger"></i>
+                            <strong>Отклонить:</strong> Нажмите красную кнопку "Отклонить" для отклонения контента
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-filter text-info"></i>
+                            <strong>Фильтры:</strong> Используйте фильтры для поиска нужного контента
+                        </li>
+                        <li>
+                            <i class="fas fa-eye text-primary"></i>
+                            <strong>Просмотр:</strong> Нажмите на записи для детального просмотра
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
