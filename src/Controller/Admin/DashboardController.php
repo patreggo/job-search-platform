@@ -20,101 +20,40 @@ class DashboardController extends AbstractDashboardController
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
-        return $this->render('admin/dashboard.html.twig');
+        $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
+
+        // Перенаправляем на страницу с немодерированными вакансиями
+        return $this->redirect($adminUrlGenerator->setController(VacancyCrudController::class)->generateUrl());
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Админ панель - Модерация')
-            ->setFaviconPath('favicon.ico');
+            ->setTitle('Админ-панель модерации')
+            ->setLocales(['ru' => '🇷🇺 Русский']);
+
     }
 
     public function configureMenuItems(): iterable
     {
+        // Главная страница
         yield MenuItem::linkToDashboard('Главная', 'fa fa-home');
-
-        // Статистика
-        yield MenuItem::section('Статистика');
-        yield MenuItem::linkToUrl('Дашборд', 'fa fa-chart-bar', $this->generateUrl('admin_stats'));
 
         // Модерация
         yield MenuItem::section('Модерация');
 
-        yield MenuItem::linkToCrud('Вакансии на модерации', 'fa fa-briefcase', Vacancy::class)
-            ->setQueryParameter('filters[isModerated]', '0');
+        yield MenuItem::linkToCrud('Вакансии', 'fa fa-briefcase', Vacancy::class)
+            ->setDefaultSort(['createdAt' => 'DESC']);
 
-        yield MenuItem::linkToCrud('Резюме на модерации', 'fa fa-file-text', Resume::class)
-            ->setQueryParameter('filters[isModerated]', '0');
+        yield MenuItem::linkToCrud('Резюме', 'fa fa-file-text', Resume::class)
+            ->setDefaultSort(['createdAt' => 'DESC']);
 
-        yield MenuItem::linkToCrud('Компании на модерации', 'fa fa-building', Company::class)
-            ->setQueryParameter('filters[isConfirmed]', '0');
+        yield MenuItem::linkToCrud('Компании', 'fa fa-building', Company::class)
+            ->setDefaultSort(['createdAt' => 'DESC']);
 
-        // Все записи
-        yield MenuItem::section('Все записи');
-        yield MenuItem::linkToCrud('Все вакансии', 'fa fa-briefcase', Vacancy::class);
-        yield MenuItem::linkToCrud('Все резюме', 'fa fa-file-text', Resume::class);
-        yield MenuItem::linkToCrud('Все компании', 'fa fa-building', Company::class);
-    }
+        // Статистика
+        yield MenuItem::section('Статистика');
 
-    #[Route('/admin/stats', name: 'admin_stats')]
-    public function stats(
-        EntityManagerInterface $entityManager,
-    ): Response
-    {
-        $pendingVacancies = $entityManager->getRepository(Vacancy::class)
-            ->count(['isModerated' => false]);
-
-        $approvedVacancies = $entityManager->getRepository(Vacancy::class)
-            ->createQueryBuilder('v')
-            ->select('COUNT(v.id)')
-            ->where('v.isModerated = true AND v.moderationStatus = :status')
-            ->setParameter('status', 'approved')
-            ->getQuery()
-            ->getSingleScalarResult();
-
-        $rejectedVacancies = $entityManager->getRepository(Vacancy::class)
-            ->createQueryBuilder('v')
-            ->select('COUNT(v.id)')
-            ->where('v.isModerated = true AND v.moderationStatus = :status')
-            ->setParameter('status', 'rejected')
-            ->getQuery()
-            ->getSingleScalarResult();
-
-        $pendingResumes = $entityManager->getRepository(Resume::class)
-            ->count(['isModerated' => false]);
-
-        $approvedResumes = $entityManager->getRepository(Resume::class)
-            ->createQueryBuilder('r')
-            ->select('COUNT(r.id)')
-            ->where('r.isModerated = true AND r.moderationStatus = :status')
-            ->setParameter('status', 'approved')
-            ->getQuery()
-            ->getSingleScalarResult();
-
-        $rejectedResumes = $entityManager->getRepository(Resume::class)
-            ->createQueryBuilder('r')
-            ->select('COUNT(r.id)')
-            ->where('r.isModerated = true AND r.moderationStatus = :status')
-            ->setParameter('status', 'rejected')
-            ->getQuery()
-            ->getSingleScalarResult();
-
-        $pendingCompanies = $entityManager->getRepository(Company::class)
-            ->count(['isConfirmed' => false]);
-
-        $approvedCompanies = $entityManager->getRepository(Company::class)
-            ->count(['isConfirmed' => true]);
-
-        return $this->render('admin/stats.html.twig', [
-            'pending_vacancies' => $pendingVacancies,
-            'approved_vacancies' => $approvedVacancies,
-            'rejected_vacancies' => $rejectedVacancies,
-            'pending_resumes' => $pendingResumes,
-            'approved_resumes' => $approvedResumes,
-            'rejected_resumes' => $rejectedResumes,
-            'pending_companies' => $pendingCompanies,
-            'approved_companies' => $approvedCompanies,
-        ]);
+        yield MenuItem::linkToUrl('На сайт', 'fa fa-external-link', '/');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use Admin\Traits\PositionTrait;
+use App\Traits\PositionTrait;
 use App\Helpers\ClassHelper;
 use App\Service\StringHelperService;
 use App\Traits\SlugTrait;

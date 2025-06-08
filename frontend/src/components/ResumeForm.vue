@@ -3,8 +3,12 @@
     <div class="max-w-5xl mx-auto px-4">
       <!-- Заголовок -->
       <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-gray-900 mb-2">Создание резюме</h1>
-        <p class="text-gray-600">Заполните информацию о себе, чтобы создать привлекательное резюме</p>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">
+          {{ isEdit ? 'Редактировать резюме' : 'Создать резюме' }}
+        </h1>
+        <p class="text-gray-600">
+          {{ isEdit ? 'Обновите информацию о себе' : 'Заполните информацию о себе, чтобы создать привлекательное резюме' }}
+        </p>
       </div>
 
       <form @submit.prevent="submit" class="space-y-8">
@@ -185,7 +189,8 @@
             <h2 class="text-xl font-semibold text-white flex items-center">
               <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 Limestone 4.0 International License
+ 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
               </svg>
               Образование
             </h2>
@@ -329,18 +334,26 @@
                        class="w-5 h-5 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
                 <label for="active" class="ml-3 flex items-center cursor-pointer">
                   <svg class="w-5 h-5 mr-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                    <span class="text-sm font-medium text-gray-700">Есть личный автомобиль</span>
+                  <span class="text-sm font-medium text-gray-700">Активно</span>
                 </label>
               </div>
-              <div>
-                <button type="submit"
-                        class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                  Создать резюме
-                </button>
-              </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Кнопки -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <div class="flex justify-end space-x-3">
+            <router-link to="/resume/personal"
+                         class="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+              Отмена
+            </router-link>
+            <button type="submit"
+                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+              {{ isEdit ? 'Сохранить изменения' : 'Создать резюме' }}
+            </button>
           </div>
         </div>
       </form>
@@ -368,20 +381,22 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
 }
 button:hover {
-  background-color: #2563eb;
+  background-color: #059669;
 }
 </style>
 
 <script setup>
-import { reactive, onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { reactive, onMounted, ref, computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import api from '../api.js'
 
+const route = useRoute()
 const router = useRouter()
+const isEdit = computed(() => !!route.params.id)
 
 const form = reactive({
   firstName: '',
@@ -390,10 +405,10 @@ const form = reactive({
   desiredSalary: null,
   gender: null,
   residenceCity: null,
-  citizenship:[],
-  specialization: [],
+  citizenship: [],
+  specialization: null,
   workPlace: [],
-  workSchedule:[],
+  workSchedule: null,
   education: [],
   employmentType: [],
   awardAndAchievement: [],
@@ -435,7 +450,7 @@ const loadCities = async (target) => {
     const { data } = await api.get(`/city/list`)
     target.value = data
   } catch (e) {
-    console.error(`Ошибка при загрузке`, e)
+    console.error(`Ошибка при загрузке городов:`, e)
   }
 }
 
@@ -444,28 +459,74 @@ const loadCountries = async (target) => {
     const { data } = await api.get(`/country/list`)
     target.value = data
   } catch (e) {
-    console.error(`Ошибка при загрузке`, e)
+    console.error(`Ошибка при загрузке стран:`, e)
   }
 }
 
-onMounted(() => {
-  loadCities(cities)
-})
+onMounted(async () => {
+  await loadCities(cities)
+  await loadCountries(countries)
+  await loadParameters('employment_type', employmentTypes)
+  await loadParameters('specializations', specializations)
+  await loadParameters('work_experience', workExperiences)
+  await loadParameters('work_schedule', workSchedule)
+  await loadParameters('education', educationLevels)
+  await loadGenders('gender', genders)
 
-onMounted(() => {
-  loadCountries(countries)
-})
+  if (isEdit.value) {
+    try {
+      const { data } = await api.get(`/resume/${route.params.id}`)
 
-onMounted(() => {
-  loadParameters('employment_type', employmentTypes)
-  loadParameters('specializations', specializations)
-  loadParameters('work_experience', workExperiences)
-  loadParameters('work_schedule', workSchedule)
-  loadParameters('education', educationLevels)
-})
+      // Исправленное заполнение формы с учетом реальной структуры API
+      Object.assign(form, {
+        // Основная информация - используем snake_case из API
+        firstName: data.first_name || '',
+        lastName: data.last_name || '',
+        birthDate: data.birth_date ? data.birth_date.split('T')[0] : '', // Форматируем дату
+        desiredSalary: data.desired_salary ? parseFloat(data.desired_salary) : null,
 
-onMounted(() => {
-  loadGenders('gender', genders)
+        // Дополнительная информация
+        gender: data.gender?.id || null,
+        residenceCity: data.residence_city?.id || null,
+        citizenship: data.citizenship?.map(c => c.id) || [],
+        specialization: data.specialization?.id || null,
+
+        // Опыт работы - используем snake_case
+        workPlace: data.work_place?.map(wp => ({
+          organizationName: wp.organization_name || '',
+          professionName: wp.profession_name || '',
+          startDate: wp.start_date ? wp.start_date.split('T')[0] : '',
+          endDate: wp.end_date ? wp.end_date.split('T')[0] : ''
+        })) || [],
+
+        workSchedule: data.work_schedule?.id || null,
+
+        // Образование
+        education: data.education?.map(edu => ({
+          levelEducation: edu.level_education?.id || null,
+          university: edu.university || '',
+          speciality: edu.speciality || '',
+          faculty: edu.faculty || '',
+          graduationYear: edu.graduation_year || null
+        })) || [],
+
+        // Тип занятости - используем snake_case
+        employmentType: data.employment_type?.map(type => type.id) || [],
+
+        // Награды и достижения - используем snake_case
+        awardAndAchievement: data.award_and_achievement?.map(award => ({
+          description: award.description || ''
+        })) || [],
+
+        // Дополнительные параметры - используем snake_case
+        havePersonalCar: data.have_personal_car || false,
+        isActive: data.is_active !== undefined ? data.is_active : true
+      })
+    } catch (e) {
+      console.error('Ошибка загрузки данных резюме:', e)
+      alert('Не удалось загрузить данные резюме')
+    }
+  }
 })
 
 // Вспомогательные методы для массивов
@@ -494,13 +555,18 @@ const removeAward = (index) => {
 const submit = async () => {
   try {
     const payload = JSON.parse(JSON.stringify(form))
-    const { data } = await api.post('/resume/new', payload, {
-      headers: { 'Content-Type': 'application/json' }
-    })
-    await router.push(`/resume/${data.id}`)
+    if (isEdit.value) {
+      await api.put(`/edit_resume/${route.params.id}`, payload)
+    } else {
+      const { data } = await api.post('/resume/new', payload, {
+        headers: { 'Content-Type': 'application/json' }
+      })
+      await router.push(`/resume/${data.id}`)
+    }
+    router.push('/resume/personal')
   } catch (e) {
     console.error(e.response?.data || e)
-    alert('Ошибка при создании резюме')
+    alert(isEdit.value ? 'Ошибка при сохранении резюме' : 'Ошибка при создании резюме')
   }
 }
 </script>

@@ -15,14 +15,20 @@ import RoleBasedHome from "./components/RoleBasedHome.vue";
 import PersonalResumes from "./components/PersonalResumes.vue";
 import CompanyList from './components/CompanyList.vue'
 import CompanyForm from './components/CompanyForm.vue'
+import LandingPage from "./components/LandingPage.vue";
+import PerosnalVacancies from "./components/PerosnalVacancies.vue";
 
 const routes = [
     { path: '/login', component: Login },
     { path: '/register', component: Register },
     {
-        path: '/',
+        path: '/main',
         component: RoleBasedHome,
         meta: { requiresAuth: true }
+    },
+    {
+        path: '/',
+        component: LandingPage,
     },
     {
         path: '/vacancy/new',
@@ -72,6 +78,11 @@ const routes = [
         meta: { requiresAuth: true }
     },
     {
+        path: '/vacancy/user/personal',
+        component: PerosnalVacancies,
+        meta: { requiresAuth: true }
+    },
+    {
         path: '/company/new',
         component: CompanyForm,
         meta: { requiresAuth: true}
@@ -79,6 +90,16 @@ const routes = [
     {
         path: '/company/edit/:id',
         component: CompanyForm,
+        meta: { requiresAuth: true}
+    },
+    {
+        path: '/vacancy/edit/:id',
+        component: VacancyForm,
+        meta: { requiresAuth: true}
+    },
+    {
+        path: '/resume/edit/:id',
+        component: ResumeForm,
         meta: { requiresAuth: true}
     }
 ]

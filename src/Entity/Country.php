@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use Admin\Traits\PositionTrait;
+use App\Traits\PositionTrait;
 use ApiPlatform\Metadata\ApiResource;
 use App\Entity\Vacancy\Vacancy;
 use App\Repository\CountryRepository;

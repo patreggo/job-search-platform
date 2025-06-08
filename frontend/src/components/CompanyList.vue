@@ -24,7 +24,7 @@
                            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                 Редактировать
               </router-link>
-              <button @click="deleteCompany(company.id)"
+              <button @click="confirmDelete(company)"
                       class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
                 Удалить
               </button>
@@ -39,15 +39,32 @@
       </div>
     </div>
   </div>
+
+  <!-- Модальное окно удаления -->
+  <div v-if="showDeleteModal" class="fixed inset-0 flex items-center justify-center z-50">
+    <div class="absolute inset-0 bg-black/30" @click="closeDeleteModal"></div>
+    <div class="bg-white p-6 rounded-lg shadow-xl z-10 max-w-md w-full">
+      <h3 class="text-lg font-semibold mb-4">Удаление компании</h3>
+      <p class="text-gray-600 mb-6">
+        Вы уверены, что хотите удалить компанию "{{ companyToDelete?.name }}"?
+      </p>
+      <div class="flex justify-end gap-2">
+        <button @click="closeDeleteModal" class="px-4 py-2 bg-gray-300 rounded-md">Отмена</button>
+        <button @click="deleteCompany" class="px-4 py-2 bg-red-600 text-white rounded-md">Удалить</button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import api from '../api.js'
-import router from '../router.js'
 
 const companies = ref([])
 const loading = ref(true)
+
+const showDeleteModal = ref(false)
+const companyToDelete = ref(null)
 
 onMounted(async () => {
   try {
@@ -60,15 +77,24 @@ onMounted(async () => {
   }
 })
 
-const deleteCompany = async (id) => {
-  if (confirm('Вы уверены, что хотите удалить эту компанию?')) {
-    try {
-      await api.delete(`/company/${id}`)
-      companies.value = companies.value.filter(company => company.id !== id)
-    } catch (e) {
-      console.error('Ошибка удаления компании:', e)
-      alert('Не удалось удалить компанию')
-    }
+const confirmDelete = (company) => {
+  companyToDelete.value = company
+  showDeleteModal.value = true
+}
+
+const closeDeleteModal = () => {
+  showDeleteModal.value = false
+  companyToDelete.value = null
+}
+
+const deleteCompany = async () => {
+  try {
+    await api.delete(`/company/${companyToDelete.value.id}`)
+    companies.value = companies.value.filter(c => c.id !== companyToDelete.value.id)
+    closeDeleteModal()
+  } catch (e) {
+    console.error('Ошибка удаления компании:', e)
+    alert('Не удалось удалить компанию')
   }
 }
 </script>

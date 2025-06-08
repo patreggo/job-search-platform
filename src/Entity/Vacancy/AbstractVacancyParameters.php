@@ -3,7 +3,7 @@
 namespace App\Entity\Vacancy;
 
 
-use Admin\Traits\PositionTrait;
+use App\Traits\PositionTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;

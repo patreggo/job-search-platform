@@ -24,38 +24,26 @@ class VacancyResponseApiController extends AbstractFOSRestController
     public function newVacancyResponse(
         Request                         $request,
         VacancyResponseStatusRepository $vacancyResponseStatusRepository,
-        EntityManagerInterface            $entityManager,
-        UserRepository  $userRepository
+        EntityManagerInterface          $entityManager,
+        UserRepository                  $userRepository
     ): Response
     {
         $user = $this->getUser();
 
-        $userResumes = $user->getResumes()->filter(
-            function (Resume $resume) {
-                return $resume->isIsActive();
-            }
-        );
+        $vacancyResponse = new VacancyResponse();
+        $vacancyResponse->setStatus($vacancyResponseStatusRepository->findOneBy(["techName" => VacancyResponseStatus::DEFAULT_STATUS_TECH_NAME]));
+        $vacancyResponse->setInitiator($user);
+        $form = $this->createForm(VacancyResponseApiType::class, $vacancyResponse);
+        $data = json_decode($request->getContent(), true);
 
-        if ($userResumes->count() > 0) {
-            $vacancyResponse = new VacancyResponse();
-            $vacancyResponse->setStatus($vacancyResponseStatusRepository->findOneBy(["techName" => VacancyResponseStatus::DEFAULT_STATUS_TECH_NAME]));
-            $vacancyResponse->setInitiator($user);
-
-            $form = $this->createForm(VacancyResponseApiType::class, $vacancyResponse);
-            $data = json_decode($request->getContent(), true);
-
-            $form->submit($data);
-            if ($form->isSubmitted() && $form->isValid()) {
-                $entityManager->persist($vacancyResponse);
-                $entityManager->flush();
-                return $this->handleView($this->view($vacancyResponse, Response::HTTP_CREATED));
-            }
-            return $this->handleView($this->view($form->getErrors(), Response::HTTP_BAD_REQUEST));
+        $form->submit($data);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($vacancyResponse);
+            $entityManager->flush();
+            return $this->handleView($this->view($vacancyResponse, Response::HTTP_CREATED));
         }
-        throw new HttpException(
-            300,
-            message:"loh",
-        );
+        return $this->handleView($this->view($form->getErrors(), Response::HTTP_BAD_REQUEST));
+
     }
 
     #[Rest\Get('/user/personal', name: 'personal')]

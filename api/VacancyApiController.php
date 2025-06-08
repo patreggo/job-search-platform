@@ -2,6 +2,8 @@
 
 namespace Api;
 
+use App\Entity\Company;
+use App\Entity\User;
 use App\Entity\Vacancy\Vacancy;
 use App\Form\ApiVacancyType;
 use App\Repository\Vacancy\VacancyRepository;
@@ -67,12 +69,38 @@ class VacancyApiController extends AbstractFOSRestController
         return $this->handleView($this->view($data, Response::HTTP_OK));
     }
 
+    #[Rest\Put('/edit_vacancy/{id}', name: 'edit_vacancy')]
+    public function editVacancy(
+        Vacancy $vacancy,
+        Request $request,
+        EntityManagerInterface $entityManager,
+    ): Response
+    {
+        $form = $this->createForm(ApiVacancyType::class, $vacancy);
+        $data = json_decode($request->getContent(), true);
+        $form->submit($data);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+            return $this->handleView($this->view($vacancy, Response::HTTP_OK));
+        }
+
+        return $this->handleView($this->view($form->getErrors(), Response::HTTP_BAD_REQUEST));
+    }
+
+
     #[Rest\Get('/user/personal', name: 'personal')]
     public function userResume(
         VacancyRepository $vacancyRepository,
+        EntityManagerInterface $entityManager,
     ): Response
     {
-        $data = $vacancyRepository->findBy(['user' => $this->getUser()->getId()]);
+        $companies = $entityManager->getRepository(Company::class)->findBy(['user' => $this->getUser()]);
+        $data = $vacancyRepository->createQueryBuilder('v')
+            ->where('v.company IN (:companies)')
+            ->setParameter('companies', $companies)
+            ->getQuery()
+            ->getResult();
         return $this->handleView($this->view($data, Response::HTTP_OK));
     }
 }

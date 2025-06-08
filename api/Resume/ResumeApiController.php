@@ -86,4 +86,23 @@ class ResumeApiController extends AbstractFOSRestController
         $data = $resumeRepository->findBy(['user' => $this->getUser()->getId()]);
         return $this->handleView($this->view($data, Response::HTTP_OK));
     }
+
+    #[Rest\Put('/edit_resume/{id}', name: 'edit_resume')]
+    public function editResume(
+        Resume $resume,
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response
+    {
+        $form = $this->createForm(ResumeApiType::class, $resume);
+        $data = json_decode($request->getContent(), true);
+        $form->submit($data);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+            return $this->handleView($this->view($resume, Response::HTTP_OK));
+        }
+
+        return $this->handleView($this->view($form->getErrors(), Response::HTTP_BAD_REQUEST));
+    }
 }

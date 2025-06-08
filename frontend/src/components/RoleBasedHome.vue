@@ -7,18 +7,6 @@
         <p class="subtitle">Найдите идеальную работу для себя</p>
       </div>
 
-      <div class="quick-actions">
-        <router-link to="/vacancy_response/user/personal" class="action-btn primary">
-          Мои отклики
-        </router-link>
-        <router-link to="/resume/new" class="action-btn secondary">
-          Создать резюме
-        </router-link>
-        <router-link to="/resume/user/personal" class="action-btn secondary">
-          Мои резюме
-        </router-link>
-      </div>
-
       <!-- Список вакансий для пользователей -->
       <VacanciesList />
     </div>
@@ -28,15 +16,6 @@
       <div class="dashboard-header">
         <h1>Панель работодателя</h1>
         <p class="subtitle">Найдите лучших кандидатов для вашей компании</p>
-      </div>
-
-      <div class="quick-actions">
-        <router-link to="/vacancy/new" class="action-btn primary">
-          Создать вакансию
-        </router-link>
-        <router-link to="/vacancies" class="action-btn secondary">
-          Мои вакансии
-        </router-link>
       </div>
 
       <!-- Список резюме для работодателей -->

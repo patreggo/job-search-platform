@@ -252,7 +252,7 @@ onMounted(async () => {
 
   if (isEdit.value) {
     try {
-      const { data } = await api.get(`/vacancy/${route.params.id}`)
+      const { data } = await api.get(`/single_vacancy/${route.params.id}`)
       Object.assign(form, {
         name: data.name,
         company: data.company?.id || null,
@@ -279,7 +279,7 @@ const submit = async () => {
   try {
     const payload = JSON.parse(JSON.stringify(form))
     if (isEdit.value) {
-      await api.put(`/vacancy/${route.params.id}`, payload)
+      await api.put(`/edit_vacancy/${route.params.id}`, payload)
     } else {
       await api.post('/new_vacancy', payload)
     }

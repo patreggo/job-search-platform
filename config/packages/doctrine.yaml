@@ -26,6 +26,9 @@ doctrine:
                 alias: App
         controller_resolver:
             auto_mapping: false
+        filters:
+            only_enabled_from_front_doctrine_filter: App\GlobalFilters\OnlyEnabledFromFrontDoctrineFilter
+            only_moderated_from_front_doctrine_filter: App\GlobalFilters\OnlyModeratedFromFrontDoctrineFilter
 
 when@test:
     doctrine:

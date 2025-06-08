@@ -1,0 +1,17 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    bind:
+      $rootPath: '%kernel.project_dir%'
+      $environment: '%kernel.environment%'
+  doctrine_filters_enabled_listener:
+    class: App\EventListener\DoctrineFiltersEnabledListener
+    arguments: [ "@doctrine.orm.entity_manager" ]
+    tags:
+      - name: kernel.event_listener
+        event: kernel.request
+        method: onKernelRequest
+      - name: kernel.event_listener
+        event: console.command
+        method: onConsoleCommand
